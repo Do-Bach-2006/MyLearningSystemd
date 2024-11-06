@@ -1,0 +1,41 @@
+body,
+head {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#courses-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Scroll vertically if content overflows */
+  padding: 10px; /* Optional: adds some spacing */
+  background-color: blue; /* Optional: background color */
+  width: 100%;
+  height: 100%;
+}
+
+.course {
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 30%;
+  height: 10%;
+}
+
+.course:hover {
+  background-color: darkblue;
+}

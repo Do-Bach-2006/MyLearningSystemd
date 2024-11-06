@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centered Header and Grid</title>
+    <!-- Bootstrap CSS -->
+    <!-- <link -->
+    <!--   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" -->
+    <!--   rel="stylesheet" -->
+    <!-- /> -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Container div to center the content -->
+    <!-- Full-Height Container -->
+    <!-- Container div to center the content -->
+    <div class="container" id="main-content">
+      <!-- Centered H1 Header -->
+      <h1 class="text-center mb-4">Centered Header</h1>
+      <!-- Grid div for buttons (3 rows, 1 button each) -->
+      <div class="button-grid d-grid gap-3">
+        <button class="button-54" role="button">Button 54</button>
+        <button class="button-54" role="button">Button 54</button>
+        <button class="button-54" role="button">Button 54</button>
+      </div>
+    </div>
+
+    <div id="dynamic-content" style="display: none"></div>
+    <!-- <div class="container">hello is there anything here ?</div> -->
+
+    <!-- Bootstrap JS (for interactive components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="renderer.js"></script>
+  </body>
+</html>

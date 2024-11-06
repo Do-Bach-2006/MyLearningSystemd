@@ -1,0 +1,16 @@
+{
+  "name": "apathetic-industry-create-k2t99",
+  "productName": "apathetic-industry-create-k2t99",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "gnomeright",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "31.2.1"
+  }
+}
