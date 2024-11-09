@@ -43,7 +43,7 @@ let course_and_videos = [];
 
 function recurGetVideos(pathToCourse, videos, childDirectories) {
   function isDirectory(path) {
-    return fs.statSync(path).isDirectory();
+    return fs.extname(path) === "";
   }
 
   const videoFileExtensions = [".mkv", ".mp4"];
@@ -81,7 +81,7 @@ courses.forEach((course) => {
   }
 });
 
-console.log("sucess full");
+console.log("whoo hoow");
 fs.writeFileSync(PATH_TO_COURSES_INFO_JSON, JSON.stringify(coursesInfo));
 
 // const process = require("process");
