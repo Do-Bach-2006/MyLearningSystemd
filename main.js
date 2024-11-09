@@ -67,8 +67,8 @@ app.on("window-all-closed", function () {
 //   if (process.platform !== 'darwin') app.quit();
 // });
 //
+//
 
-// Listen for page switch requests
-ipcMain.on("load-page", (event, pagePath) => {
-  mainWindow.loadFile(pagePath);
-});
+require("./utils/get_course_directories.js");
+require("./utils/get_course_informations.js");
+console.log("hello from main.js");

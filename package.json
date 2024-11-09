@@ -7,10 +7,11 @@
   "version": "1.0.0",
   "author": "gnomeright",
   "scripts": {
-    "start": "electron ."
+    "start": "electron32 ."
   },
   "dependencies": {},
   "devDependencies": {
     "electron": "31.2.1"
   }
 }
+

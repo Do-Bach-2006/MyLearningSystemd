@@ -12,22 +12,22 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Container div to center the content -->
-    <!-- Full-Height Container -->
-    <!-- Container div to center the content -->
     <div class="container" id="main-content">
-      <!-- Centered H1 Header -->
       <h1 class="text-center mb-4">Centered Header</h1>
-      <!-- Grid div for buttons (3 rows, 1 button each) -->
       <div class="button-grid d-grid gap-3">
-        <button class="button-54" role="button">Button 54</button>
+        <button class="button-54" onclick="button1Clicked()" id="learn-button">
+          Learn something
+        </button>
         <button class="button-54" role="button">Button 54</button>
         <button class="button-54" role="button">Button 54</button>
       </div>
     </div>
 
-    <div id="dynamic-content" style="display: none"></div>
-    <!-- <div class="container">hello is there anything here ?</div> -->
+    <a
+      id="link-to-select-course"
+      href="features/lecture_video_management/index.html"
+      >load new things</a
+    >
 
     <!-- Bootstrap JS (for interactive components) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

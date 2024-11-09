@@ -1,6 +1,6 @@
-import { get_all_courses } from "./utils/get_course_directories.mjs";
+//import { get_all_courses } from "./utils/get_course_directories.mjs";
 
-const courses = get_all_courses();
+//const courses = get_all_courses();
 
 const courses_container = document.getElementById("courses-container");
 
@@ -17,6 +17,22 @@ function create_new_course_button(course_object) {
 
   return div;
 }
+
+const courses = [
+  { name: "bach" },
+  { name: "giang" },
+  { name: "bill" },
+  { name: "thu" },
+  { name: "ngoc" },
+  { name: "phuoc" },
+  { name: "min" },
+  { name: "mao" },
+  { name: "khoa" },
+  { name: "hoc" },
+  { name: "duy" },
+  { name: "ngan" },
+  { name: "nam" },
+];
 
 courses.forEach((course) => {
   courses_container.appendChild(create_new_course_button(course));
