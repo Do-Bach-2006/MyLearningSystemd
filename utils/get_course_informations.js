@@ -42,13 +42,13 @@ coursesInfo.forEach((infoObject) => {
 let course_and_videos = [];
 
 function recurGetVideos(pathToCourse, videos, childDirectories) {
-  function isDirectory(path) {
-    return fs.extname(path) === "";
+  function isDirectory(pathToCheck) {
+    return path.extname(pathToCheck) === "";
   }
 
   const videoFileExtensions = [".mkv", ".mp4"];
 
-  fs.readdirSync(path).forEach((file) => {
+  fs.readdirSync(pathToCourse).forEach((file) => {
     const middleDirectories = path.join(...childDirectories);
     const PATH_TO_FILE = path.join(pathToCourse, middleDirectories, file);
 
