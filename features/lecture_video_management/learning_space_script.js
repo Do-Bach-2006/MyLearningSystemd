@@ -12,6 +12,19 @@ collapseBtn.addEventListener("click", () => {
     : "Collapse";
 });
 
+// JavaScript for collapsible functionality
+document.querySelectorAll(".collapsible").forEach((button) => {
+  button.addEventListener("click", () => {
+    const content = button.nextElementSibling;
+    // Toggle display of content
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+});
+
 const PATH_TO_SELECTED_COURSE_JSON = path.join(
   __dirname,
   "selected_course.json",
