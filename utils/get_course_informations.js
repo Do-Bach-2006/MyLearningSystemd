@@ -41,7 +41,7 @@ coursesInfo.forEach((infoObject) => {
 
 let course_and_videos = [];
 
-function recurGetVideos(pathToCourse, videos, childDirectories) {
+function recurGetVideos(pathToCourse, videos) {
   function isDirectory(pathToCheck) {
     return path.extname(pathToCheck) === "";
   }
@@ -49,14 +49,13 @@ function recurGetVideos(pathToCourse, videos, childDirectories) {
   const videoFileExtensions = [".mkv", ".mp4"];
 
   fs.readdirSync(pathToCourse).forEach((file) => {
-    const middleDirectories = path.join(...childDirectories);
-    const PATH_TO_FILE = path.join(pathToCourse, middleDirectories, file);
+    // const middleDirectories = path.join(...childDirectories);
+    // console.log(middleDirectories);
+    const PATH_TO_FILE = path.join(pathToCourse, file);
 
     if (isDirectory(PATH_TO_FILE)) {
-      // we backtrack here
-      childDirectories.push(file);
-      recurGetVideos(PATH_TO_FILE, videos, childDirectories);
-      childDirectories.pop();
+      // we recur here , the PATH_TO_FILE is already add up to that specific file
+      recurGetVideos(PATH_TO_FILE, videos);
     } else if (videoFileExtensions.includes(path.extname(PATH_TO_FILE))) {
       videos.push({
         name: file,
@@ -71,7 +70,7 @@ courses.forEach((course) => {
   // get information about newly added course
   if (!courseNames.has(course.name)) {
     let videos = [];
-    recurGetVideos(course.path, videos, []);
+    recurGetVideos(course.path, videos);
 
     coursesInfo.push({
       name: course.name,
