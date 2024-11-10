@@ -8,6 +8,8 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
+      nodeIntegration: true, // Enable Node.js in the renderer process
+      contextIsolation: false, // Disable context isolation
       preload: path.join(__dirname, "preload.js"),
     },
   });

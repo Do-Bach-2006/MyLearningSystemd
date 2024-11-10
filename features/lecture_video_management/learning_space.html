@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="learning_space_style.css" rel="stylesheet" />
+    <title>Video Layout</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Collapsible Sidebar for Video List -->
+      <div id="sidebar" class="sidebar">
+        <div class="video-list"></div>
+      </div>
+
+      <!-- Collapse Button -->
+      <button id="collapseBtn" class="collapse-btn">Collapse</button>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <!-- Video Display Part (70%) -->
+        <div class="video-display">
+          <video controls id="main_video"></video>
+        </div>
+
+        <!-- HTML Content Part (30%) -->
+        <div class="html-content">
+          <h2>Other HTML Content</h2>
+          <p>This is where other HTML content goes.</p>
+        </div>
+      </div>
+    </div>
+    <script src="learning_space_script.js" defer></script>
+  </body>
+</html>

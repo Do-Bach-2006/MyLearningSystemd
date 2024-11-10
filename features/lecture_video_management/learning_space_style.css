@@ -1,0 +1,100 @@
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout structure */
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar for video list */
+.sidebar {
+  width: 250px;
+  background-color: #f3f3f3;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  overflow: hidden;
+}
+
+/* Main content area with flex */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Video Display (70%) */
+.video-display {
+  width: 70%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px;
+}
+
+/* Additional HTML Content (30%) */
+.html-content {
+  width: 30%;
+  background-color: #eaeaea;
+  padding: 10px;
+}
+
+/* Video List */
+.video-list {
+  padding: 10px;
+}
+
+.video-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.video-item:hover {
+  background-color: #ddd;
+}
+
+/* Collapse button */
+.collapse-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: left 0.3s ease;
+  z-index: 10;
+}
+
+.sidebar.collapsed ~ .collapse-btn {
+  left: 10px;
+}
+
+.video-tag {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f3f3f3;
+  color: #333;
+}
