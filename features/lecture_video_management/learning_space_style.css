@@ -15,6 +15,7 @@ html {
 .container {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
 /* Sidebar for video list */
@@ -84,6 +85,16 @@ html {
   cursor: pointer;
   transition: left 0.3s ease;
   z-index: 10;
+}
+
+.collapse-btn:hover {
+  background-color: #555;
+}
+
+#returnBtn {
+  position: absolute;
+  top: 10px;
+  left: 100px;
 }
 
 .sidebar.collapsed ~ .collapse-btn {

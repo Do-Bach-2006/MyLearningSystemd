@@ -7,6 +7,5 @@
  */
 
 function button1Clicked() {
-  const link1 = document.getElementById("link-to-select-course");
-  link1.click();
+  window.location.href = "features/lecture_video_management/course_menu.html";
 }

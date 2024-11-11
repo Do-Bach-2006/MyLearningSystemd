@@ -31,6 +31,7 @@ h4 {
   overflow-y: scroll;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .course-container::-webkit-scrollbar {
@@ -50,4 +51,21 @@ h4 {
 
 .course:hover {
   background-color: darkblue;
+}
+
+.corner-button {
+  position: absolute;
+  top: 0;
+  left: 0; /* Example: top-right corner */
+  padding: 10px;
+  background-color: transparent; /* Transparent background */
+  color: white; /* Button text color */
+  border: 1px solid white; /* Optional: gives it a visible border */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Optional: Add a hover effect */
+.corner-button:hover {
+  background-color: rgba(255, 255, 255, 0.6); /* Slightly opaque on hover */
 }

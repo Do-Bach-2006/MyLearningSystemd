@@ -36,8 +36,7 @@ function create_new_course_button(course_object) {
       console.error("Error writing file:", error);
     }
 
-    const link = document.getElementById("learning_space");
-    link.click();
+    window.location.href = "./learning_space.html";
   };
 
   return div;
@@ -56,3 +55,7 @@ courses.forEach((course) => {
   courses_container.appendChild(create_new_course_button(course));
   console.log("i was here !");
 });
+
+function return_to_main_menu() {
+  window.location.href = "../../index.html";
+}
