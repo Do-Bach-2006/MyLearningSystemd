@@ -55,6 +55,8 @@ coursesInfo.forEach((courseInfo) => {
       videoLink.onclick = () => {
         const videoPlayer = document.getElementById("main_video");
         videoPlayer.src = video.pathToVideoURL;
+
+        // TODO: select the corresponding note editor here !
       };
     });
   }

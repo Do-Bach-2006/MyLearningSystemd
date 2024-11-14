@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="learning_space_style.css" rel="stylesheet" />
+    <!-- Include Quill stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
     <title>Video Layout</title>
   </head>
   <body>
@@ -34,10 +39,16 @@
           <h2>Other HTML Content</h2>
           <p>This is where other HTML content goes.</p>
           <!-- ChatGPT Collapsible Section -->
-          <button class="collapsible">Load ChatGPT</button>
+          <button class="collapsible">Note</button>
           <div class="content">
-            <iframe src="https://claude.ai/new"></iframe>
+            <div id="editor">
+              <p>Hello World!</p>
+              <p>Some initial <strong>bold</strong> text</p>
+              <p><br /></p>
+            </div>
           </div>
+
+          <!-- Create the editor container -->
 
           <!-- Thesaurus Collapsible Section -->
           <button class="collapsible">Load Thesaurus</button>
@@ -54,5 +65,14 @@
       </div>
     </div>
     <script src="learning_space_script.js" defer></script>
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+      const quill = new Quill("#editor", {
+        theme: "snow",
+      });
+    </script>
   </body>
 </html>

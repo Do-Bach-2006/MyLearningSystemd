@@ -9,9 +9,12 @@
   "scripts": {
     "start": "electron32 ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "md-editor-v3": "^5.0.0",
+    "quill": "^2.0.2",
+    "vue": "^3.5.12"
+  },
   "devDependencies": {
     "electron": "31.2.1"
   }
 }
-
