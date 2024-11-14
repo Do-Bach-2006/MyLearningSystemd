@@ -62,8 +62,9 @@ function recurGetVideos(pathToCourse, videos, childDirectories) {
     } else if (videoFileExtensions.includes(path.extname(PATH_TO_FILE))) {
       let middleName = childDirectories.join("_");
 
+      //TODO: a video name should be different from a video note .
       videos.push({
-        name: middleName + "-" + file,
+        name: middleName + "_" + file,
         pathToVideoURL: PATH_TO_FILE,
         lastViewTime: 0,
       });
