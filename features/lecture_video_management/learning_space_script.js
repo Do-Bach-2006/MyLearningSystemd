@@ -1,6 +1,6 @@
 // JavaScript for collapse functionality
 const path = require("path");
-const fs = require("fs");
+const { save_notes, get_notes } = require("./utils/notes.js");
 
 const sidebar = document.getElementById("sidebar");
 const collapseBtn = document.getElementById("collapseBtn");
@@ -40,6 +40,12 @@ const coursesInfo = require(PATH_TO_COURSES_INFO_JSON);
 console.log(selectedCourse.toString());
 console.log(coursesInfo);
 
+const quill = new Quill("#editor", {
+  theme: "snow",
+});
+
+let CURRENT_VIDEO_NAME = "?";
+
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
     courseInfo.videos.forEach((video) => {
@@ -52,12 +58,31 @@ coursesInfo.forEach((courseInfo) => {
       sidebar.appendChild(videoLink);
 
       // add function when we click on the video tag
-      videoLink.onclick = () => {
+
+      videoLink.onclick = function () {
         const videoPlayer = document.getElementById("main_video");
         videoPlayer.src = video.pathToVideoURL;
 
-        // TODO: select the corresponding note editor here !
+        const editorContent = get_notes(video.name);
+
+        CURRENT_VIDEO_NAME = video.name;
+
+        if (editorContent) {
+          quill.setContents(editorContent);
+        } else {
+          console.error("Failed to load notes.");
+        }
       };
     });
   }
 });
+
+function save_content() {
+  console.log("button clicked");
+  const editorContent = quill.getContents();
+
+  save_notes(CURRENT_VIDEO_NAME, editorContent);
+}
+
+const saveButton = document.getElementById("saveNote");
+saveButton.addEventListener("click", save_content);

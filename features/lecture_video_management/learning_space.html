@@ -46,6 +46,7 @@
               <p>Some initial <strong>bold</strong> text</p>
               <p><br /></p>
             </div>
+            <button id="saveNote">Save Note</button>
           </div>
 
           <!-- Create the editor container -->
@@ -64,15 +65,10 @@
         </div>
       </div>
     </div>
-    <script src="learning_space_script.js" defer></script>
+    <script src="learning_space_script.js" type="module" defer></script>
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
 
     <!-- Initialize Quill editor -->
-    <script>
-      const quill = new Quill("#editor", {
-        theme: "snow",
-      });
-    </script>
   </body>
 </html>
