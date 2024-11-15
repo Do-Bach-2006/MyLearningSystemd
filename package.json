@@ -10,8 +10,11 @@
     "start": "electron32 ."
   },
   "dependencies": {
+    "delta-markdown-for-quill": "^0.0.9",
+    "markdown-to-quill-delta": "^0.7.0",
     "md-editor-v3": "^5.0.0",
     "quill": "^2.0.2",
+    "quill-delta-to-markdown": "^0.6.0",
     "vue": "^3.5.12"
   },
   "devDependencies": {
