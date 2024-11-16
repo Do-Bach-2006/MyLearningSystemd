@@ -22,9 +22,10 @@ const PATH_TO_COURSES_JSON = path.join(__dirname, "../database/courses.json");
 const courses = [];
 
 fs.readdirSync(PATH_TO_COURSES_DATABASE).forEach((course_name) => {
+  console.log(course_name);
   const isDirectory = (input_path) => {
-    const ext = path.extname(input_path);
-    return ext === "";
+    const stat = fs.statSync(input_path);
+    return stat.isDirectory();
   };
 
   const course_path = path.join(PATH_TO_COURSES_DATABASE, course_name);

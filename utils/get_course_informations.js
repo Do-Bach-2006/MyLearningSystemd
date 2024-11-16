@@ -42,10 +42,10 @@ coursesInfo.forEach((infoObject) => {
 let course_and_videos = [];
 
 function recurGetVideos(pathToCourse, videos, childDirectories) {
-  function isDirectory(pathToCheck) {
-    return path.extname(pathToCheck) === "";
-  }
-
+  const isDirectory = (input_path) => {
+    const stat = fs.statSync(input_path);
+    return stat.isDirectory();
+  };
   const videoFileExtensions = [".mkv", ".mp4"];
 
   fs.readdirSync(pathToCourse).forEach((file) => {
