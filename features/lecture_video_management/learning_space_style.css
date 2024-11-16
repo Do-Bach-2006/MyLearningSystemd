@@ -153,7 +153,7 @@ iframe {
   margin: 0;
 }
 
-#input-part {
+#translateInputBox {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -202,13 +202,17 @@ textarea {
 .message {
   padding: 8px;
   margin: 5px 0;
+  width: 100%;
   border-radius: 5px;
   background-color: #e6e6e6;
+  align-self: flex-start; /* Aligns to the left */
+  text-align: left; /* Ensures text is aligned to the left */
 }
 
 .message.user {
   background-color: #d1e7dd;
-  align-self: flex-end;
+  align-self: flex-end; /* Aligns to the right */
+  text-align: right; /* Ensures text is aligned to the right */
 }
 
 .input-area {

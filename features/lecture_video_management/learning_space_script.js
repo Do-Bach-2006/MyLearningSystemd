@@ -75,6 +75,14 @@ coursesInfo.forEach((courseInfo) => {
         } else {
           console.error("Failed to load notes.");
         }
+        // TODO: set the role for AI for corresponding video
+        //
+        const initPrompt = `Imagine that you are a professional who is likely to answer everything the student ask. I'm a student with little or no knowledge , watching a video name ${video.name} , I want you to assist me learning it . Please respond in simple text format without any markdown decoration and in details way as you instruct me `;
+
+        const respond = getAIRespond(initPrompt);
+
+        console.log(initPrompt);
+        console.log(respond);
       };
     });
   }
