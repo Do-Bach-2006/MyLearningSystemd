@@ -41,11 +41,7 @@
           <!-- ChatGPT Collapsible Section -->
           <button class="collapsible">Note</button>
           <div class="content">
-            <div id="editor">
-              <p>Hello World!</p>
-              <p>Some initial <strong>bold</strong> text</p>
-              <p><br /></p>
-            </div>
+            <div id="editor"></div>
             <button id="saveNote" onclick="save_content()">Save Note</button>
           </div>
 
@@ -75,7 +71,22 @@
 
           <button class="collapsible">AI chat</button>
           <div class="content">
-            <iframe src="https://www.thesaurus.com"></iframe>
+            <div class="chat-box">
+              <!-- Message display area -->
+              <div class="message-area" id="message-area">
+                <!-- Example messages -->
+                <div class="message">Hello! How can I help you?</div>
+                <div class="message user">I have a question.</div>
+              </div>
+              <!-- Input area -->
+              <div class="input-area">
+                <textarea
+                  id="user-input"
+                  placeholder="Type your message here..."
+                ></textarea>
+                <button id="send-button">Send</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
