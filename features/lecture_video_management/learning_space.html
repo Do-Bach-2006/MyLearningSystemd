@@ -19,7 +19,7 @@
       </div>
 
       <!-- Collapse Button -->
-      <button id="collapseBtn" class="collapse-btn">Collapse</button>
+      <button id="collapseBtn" class="collapse-btn">Hide all</button>
       <button
         id="returnBtn"
         class="collapse-btn"
@@ -36,8 +36,8 @@
 
         <!-- HTML Content Part (30%) -->
         <div class="html-content">
-          <h2>Other HTML Content</h2>
-          <p>This is where other HTML content goes.</p>
+          <h2>TOOLS</h2>
+          <p>Collection of tools to assist me in learning</p>
           <!-- ChatGPT Collapsible Section -->
           <button class="collapsible">Note</button>
           <div class="content">
@@ -46,27 +46,36 @@
               <p>Some initial <strong>bold</strong> text</p>
               <p><br /></p>
             </div>
-            <button id="saveNote">Save Note</button>
+            <button id="saveNote" onclick="save_content()">Save Note</button>
           </div>
 
-          <!-- Create the editor container -->
-
           <!-- Thesaurus Collapsible Section -->
-          <button class="collapsible">Load Thesaurus</button>
+          <button class="collapsible">Thesaurus</button>
           <div class="content">
             <iframe src="https://www.thesaurus.com"></iframe>
           </div>
 
           <!-- Google transalate -->
-          <button class="collapsible">Load Google Translate</button>
+          <button class="collapsible">Translate</button>
           <div class="content">
             <div id="translateBox">
               <div id="input-part">
-                <textarea placeholder="Type here..."></textarea>
+                <textarea
+                  id="translateInput"
+                  placeholder="Type here..."
+                ></textarea>
               </div>
-              <div id="output">Output will be displayed here</div>
+              <textarea
+                id="translateOutput"
+                placeholder="Translated goes here..."
+              ></textarea>
             </div>
-            <button>translate</button>
+            <button onclick="translateText()">translate</button>
+          </div>
+
+          <button class="collapsible">AI chat</button>
+          <div class="content">
+            <iframe src="https://www.thesaurus.com"></iframe>
           </div>
         </div>
       </div>
@@ -74,7 +83,7 @@
     <script src="learning_space_script.js" type="module" defer></script>
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
-
+    <script src="./utils/translator.js"></script>
     <!-- Initialize Quill editor -->
   </body>
 </html>

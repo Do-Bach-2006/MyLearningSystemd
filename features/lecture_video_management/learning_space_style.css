@@ -161,7 +161,7 @@ iframe {
   border-right: 1px solid #ccc;
 }
 
-#output {
+#translateOutput {
   flex: 1;
   display: flex;
   justify-content: flex-start;

@@ -5,11 +5,12 @@ const { save_notes, get_notes } = require("./utils/notes.js");
 const sidebar = document.getElementById("sidebar");
 const collapseBtn = document.getElementById("collapseBtn");
 
+// function for making the sidebar collapsible
 collapseBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   collapseBtn.textContent = sidebar.classList.contains("collapsed")
-    ? "Expand"
-    : "Collapse";
+    ? "Show all"
+    : "Hide all ";
 });
 
 // JavaScript for collapsible functionality
@@ -40,12 +41,14 @@ const coursesInfo = require(PATH_TO_COURSES_INFO_JSON);
 console.log(selectedCourse.toString());
 console.log(coursesInfo);
 
+// create the quill editor
 const quill = new Quill("#editor", {
   theme: "snow",
 });
 
 let CURRENT_VIDEO_NAME = "?";
 
+// create button to switch between courses
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
     courseInfo.videos.forEach((video) => {
@@ -77,6 +80,7 @@ coursesInfo.forEach((courseInfo) => {
   }
 });
 
+// function for save notes
 function save_content() {
   console.log("button clicked");
   const editorContent = quill.getContents();
