@@ -14,7 +14,7 @@ const PATH_TO_API_KEY = path.join(
 const API_KEY_OBJECT = require(PATH_TO_API_KEY);
 
 const genAI = new GoogleGenerativeAI(API_KEY_OBJECT.key);
-const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 async function getAIRespond(prompt) {
   const result = await model.generateContent(prompt);

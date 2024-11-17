@@ -5,7 +5,3 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
-
-function button1Clicked() {
-  window.location.href = "features/lecture_video_management/course_menu.html";
-}
