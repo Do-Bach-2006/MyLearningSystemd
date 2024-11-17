@@ -51,6 +51,42 @@ let CURRENT_VIDEO_NAME = "?";
 // create button to switch between courses
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
+    courseInfo.videos.sort((stringA, stringB) => {
+      function getNumbers(inputString) {
+        let result = [];
+
+        let lastNumCharacters = [];
+
+        const number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
+        for (let char of inputString) {
+          if (number.includes(char)) {
+            lastNumCharacters.push(char);
+          } else if (lastNumCharacters.length > 0) {
+            result.push(parseInt(lastNumCharacters.join("")));
+            lastNumCharacters = [];
+          }
+        }
+
+        return result;
+      }
+      const numbersA = getNumbers(stringA.name);
+      const numbersB = getNumbers(stringB.name);
+
+      for (let i = 0; i < Math.min(numbersA.length, numbersB.length); i++) {
+        if (numbersA[i] > numbersB[i]) {
+          console.log(`${numbersA[i]} > ${numbersB[i]} true`);
+          return 1;
+        } else if (numbersA[i] < numbersB[i]) {
+          console.log(`${numbersA[i]} > ${numbersB[i]} false`);
+
+          return -1;
+        }
+      }
+
+      return numbersA.length - numbersB.length;
+    });
+
     courseInfo.videos.forEach((video) => {
       // create video tag
       const videoLink = document.createElement("div");
