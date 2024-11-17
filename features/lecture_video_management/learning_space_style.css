@@ -169,7 +169,19 @@ iframe {
   background-color: #f9f9f9; /* Optional for visibility */
 }
 
-textarea {
+#translateInput {
+  width: 100%; /* Adjust width as needed */
+  height: 100%; /* Adjust height as needed */
+  resize: none; /* Prevent resizing */
+  overflow-wrap: break-word; /* Enable text wrapping */
+  overflow-y: auto; /* Allow vertical scrolling if necessary */
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+#translateOutput {
   width: 100%; /* Adjust width as needed */
   height: 100%; /* Adjust height as needed */
   resize: none; /* Prevent resizing */

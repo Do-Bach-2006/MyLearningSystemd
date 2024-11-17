@@ -1,0 +1,51 @@
+.TODO {
+  width: 100%;
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Align items in a row */
+  justify-content: space-between; /* Distribute children with space between */
+  align-items: center; /* Vertically align items */
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+.TODOTextArea {
+  width: 80%;
+  border: none;
+  height: 100%; /* Adjust height as needed */
+  overflow-wrap: break-word; /* Enable text wrapping */
+  overflow-y: auto; /* Allow vertical scrolling if necessary */
+  padding: 5px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+.TODODeleteButton {
+  width: 10%; /* Takes up 10% of the container */
+  height: auto; /* Adjust height to match other elements */
+  box-sizing: border-box;
+  border: none;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+.TODOMarkDoneInput {
+  width: 10%;
+  height: auto; /* Adjust height to match other elements */
+  box-sizing: border-box;
+  border: none;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+#TODOBox {
+  display: block;
+  overflow-y: scroll;
+  max-height: 500px;
+  background-color: #f3f3f3;
+  color: #333;
+}

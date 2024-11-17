@@ -9,6 +9,7 @@
       href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
       rel="stylesheet"
     />
+    <link href="compoments/TODO.css" rel="stylesheet" />
     <title>Video Layout</title>
   </head>
   <body>
@@ -90,6 +91,12 @@
               </div>
             </div>
           </div>
+          <button class="collapsible">TODO List</button>
+          <div class="content">
+            <div id="TODOBox">
+              <button onclick="create_new_TODO()">add new</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -98,6 +105,7 @@
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
     <script src="./utils/translator.js"></script>
+    <script src="utils/TODOList.js"></script>
     <!-- Initialize Quill editor -->
   </body>
 </html>
