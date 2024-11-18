@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="learning_space_style.css" rel="stylesheet" />
+    <link href="compoments/promodo.css" rel="stylesheet" />
     <!-- Include Quill stylesheet -->
     <link
       href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
@@ -97,6 +98,38 @@
               <button onclick="create_new_TODO()">add new</button>
             </div>
           </div>
+
+          <button class="collapsible">PROMODO Clock</button>
+          <div class="content">
+            <div id="promodoClock">
+              <div id="timer">
+                <input
+                  type="text"
+                  id="hour"
+                  class="single-character"
+                  maxlength="2"
+                />
+
+                <h2 class="clock-number">:</h2>
+
+                <input
+                  type="text"
+                  id="min"
+                  class="single-character"
+                  maxlength="2"
+                />
+              </div>
+              <div id="controls">
+                <button class="control-button" type="button">start</button>
+                <button class="control-button" type="button">stop</button>
+                <button class="control-button" type="button">reset</button>
+              </div>
+              <div id="clocks">
+                <div>clock1</div>
+                <div>clock2</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -106,6 +139,7 @@
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
     <script src="./utils/translator.js"></script>
     <script src="utils/TODOList.js"></script>
+    <script src="utils/promodo.js"></script>
     <!-- Initialize Quill editor -->
   </body>
 </html>

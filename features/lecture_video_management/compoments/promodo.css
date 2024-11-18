@@ -1,0 +1,32 @@
+#timer,
+#controls,
+#clocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 20px;
+}
+
+#clocks div {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.single-character {
+  width: 40px; /* Adjust to fit one character visually */
+  height: 40px; /* Make it square for aesthetic */
+  text-align: center; /* Center the character */
+  font-size: 24px; /* Make the character larger */
+  border: 1px solid #ccc; /* Default border */
+  border-radius: 5px; /* Rounded corners */
+  outline: none; /* No outline on focus */
+}
+
+.single-character:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add glow on focus */
+}
