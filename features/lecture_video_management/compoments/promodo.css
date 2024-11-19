@@ -1,6 +1,6 @@
-#timer,
+#timerInput,
 #controls,
-#clocks {
+#timerDisplay {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,7 +16,7 @@
   text-align: center;
 }
 
-.single-character {
+.time-character {
   width: 40px; /* Adjust to fit one character visually */
   height: 40px; /* Make it square for aesthetic */
   text-align: center; /* Center the character */
@@ -26,7 +26,13 @@
   outline: none; /* No outline on focus */
 }
 
-.single-character:focus {
+.time-character:focus {
   border-color: #007bff; /* Highlight border on focus */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add glow on focus */
+}
+
+.display-character {
+  font-size: 24px; /* Make the character larger */
+  border: none;
+  background-color: none;
 }
