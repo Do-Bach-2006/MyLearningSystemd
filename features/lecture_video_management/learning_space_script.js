@@ -99,7 +99,7 @@ coursesInfo.forEach((courseInfo) => {
       // add function when we click on the video tag
 
       videoLink.onclick = function () {
-        const videoPlayer = document.getElementById("main_video");
+        const videoPlayer = document.getElementById("mainVideo");
         videoPlayer.src = video.pathToVideoURL;
 
         const editorContent = get_notes(video.name);

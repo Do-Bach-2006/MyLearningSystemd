@@ -37,3 +37,82 @@
   border: none;
   background-color: none;
 }
+
+.control-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: black;
+  background-color: azure;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden; /* Prevent overflow from showing */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* TODO: install nerd font and use it here !*/
+.control-button::before {
+  content: "\f004"; /* Unicode for a heart icon (Font Awesome example) */
+  font-family: "Font Awesome 5 Free"; /* Ensure the icon font is loaded */
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start completely off-screen to the left */
+  width: 100%; /* Full width of the button */
+  height: 100%; /* Full height of the button */
+  background-color: lightblue; /* The background color to "sweep in" */
+  z-index: 0; /* Ensure it is below the text */
+  transition: left 0.3s ease; /* Smooth transition effect */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-button:hover::before {
+  left: 0; /* Bring the pseudo-element fully into view */
+}
+
+.control-button:hover {
+  color: white; /* Change text color when hovered */
+}
+
+.control-button span {
+  position: relative; /* Ensure text stays above the pseudo-element */
+  z-index: 1; /* Ensure text is above the background */
+}
+
+.big-display-character {
+  font-size: 100px; /* Make the character larger */
+  border: none;
+  background-color: none;
+}
+
+.overlay {
+  position: fixed; /* Stays in place relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
+  color: white;
+  display: flex; /* Center content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it stays on top of other content */
+  text-align: center; /* Center text */
+  font-size: 24px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.overlay.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when shown */
+  transition: opacity 0.3s ease; /* Immediate visibility with fade */
+}

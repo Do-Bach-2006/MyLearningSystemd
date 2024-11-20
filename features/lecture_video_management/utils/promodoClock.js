@@ -11,8 +11,21 @@ inputs.forEach((input) => {
   input.addEventListener("input", function (e) {
     // Remove non-numeric characters and limit to 2 digits
     e.target.value = e.target.value.replace(/\D/g, "").slice(0, 2);
+    // stop the timer when user input something
+    timer.stop();
   });
 });
+
+function beautifulTimeCharacter(timeCharacter) {
+  if (parseInt(timeCharacter) < 10) {
+    return `0${timeCharacter}`;
+  }
+
+  return timeCharacter;
+}
+
+// TODO: implement the round count too !
+// when the round count is over, stop the timer and congrast the user ( using different overlay and force them to turn of the learning )
 
 function get_time() {
   const workMinuiteElement = document.getElementById("workMinutes");
@@ -38,40 +51,65 @@ function get_time() {
 
   // Subscribe to timer events
   newTimer.subscribe((currentTime) => {
-    // TODO: change the UI here
-    const timerMinuiteElement = document.getElementById("timerMinuite");
-    const timerSecondElement = document.getElementById("timerSecond");
-    console.log("hello");
-    // console.log(currentTime);
-    console.log(timerMinuiteElement);
-    console.log(timerSecondElement);
-    timerMinuiteElement.textContent = currentTime.minutes;
-    timerSecondElement.textContent = currentTime.seconds;
+    console.log("jello?");
+    if (currentTime.status === "work") {
+      workSubscribe(currentTime);
+      console.log("here!");
+    } else if (currentTime.status === "break") {
+      restSubscribe(currentTime);
+    }
   });
 
   return newTimer;
 }
 
-// Subscribe to timer events
-timer.subscribe((currentTime) => {
-  const timerMinuiteElement = document.getElementById("timerMinuite");
+function workSubscribe(currentTime) {
+  const timerMinuteElement = document.getElementById("timerMinute");
   const timerSecondElement = document.getElementById("timerSecond");
-  console.log("hello");
-  // console.log(currentTime);
-  console.log(timerMinuiteElement);
+  console.log(currentTime);
+  console.log(timerMinuteElement);
   console.log(timerSecondElement);
-  timerMinuiteElement.textContent = currentTime.minutes;
-  timerSecondElement.textContent = currentTime.seconds;
-});
+  timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
+  timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds);
+
+  const overlayElement = document.getElementById("fullScreenOverlay");
+  // Hide the overlay
+  overlayElement.classList.remove("show");
+
+  // start the playing video
+  const videoElement = document.getElementById("mainVideo");
+  videoElement.play();
+}
+
+function restSubscribe(currentTime) {
+  const timerMinuteElement = document.getElementById("restTimerMinute");
+  const timerSecondElement = document.getElementById("restTimerSecond");
+  console.log(currentTime);
+  console.log(timerMinuteElement);
+  console.log(timerSecondElement);
+
+  timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
+  timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds); //currentTime.seconds;
+
+  const overlayElement = document.getElementById("fullScreenOverlay");
+
+  // Show the overlay
+  overlayElement.classList.add("show");
+
+  // stop the playing video
+  const videoElement = document.getElementById("mainVideo");
+  videoElement.pause();
+  // TODO: implement music player here !
+}
 
 function start_timer() {
+  // stop the current running timer
+  timer.stop();
   timer = get_time();
   timer.start();
   stopState = false;
 }
 
-// TODO: change the button to continue when user hit the pause button
-// FIXME: the next state is not working
 function stop_timer() {
   if (!stopState) {
     stopState = true;

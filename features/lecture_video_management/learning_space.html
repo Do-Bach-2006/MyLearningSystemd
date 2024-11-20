@@ -33,7 +33,7 @@
       <div class="main-content">
         <!-- Video Display Part (70%) -->
         <div class="video-display">
-          <video controls id="main_video"></video>
+          <video controls id="mainVideo"></video>
         </div>
 
         <!-- HTML Content Part (30%) -->
@@ -130,9 +130,9 @@
                 />
               </div>
               <div id="timerDisplay">
-                <h2 class="display-character" id="timerMinuite">15</h2>
+                <h2 class="display-character" id="timerMinute">00</h2>
                 <h2 class="clock-number">:</h2>
-                <h2 class="display-character" id="timerSecond">30</h2>
+                <h2 class="display-character" id="timerSecond">00</h2>
               </div>
               <div id="controls">
                 <button
@@ -152,7 +152,7 @@
                 <button
                   class="control-button"
                   type="button"
-                  onclick="next_timer()"
+                  onclick="next_state()"
                 >
                   next
                 </button>
@@ -162,6 +162,33 @@
         </div>
       </div>
     </div>
+    <!-- The overlay -->
+    <div class="overlay" id="fullScreenOverlay">
+      <h1 class="big-display-character">TIME TO GRAB A COFFE !</h1>
+      <div id="timerDisplay">
+        <h2
+          class="display-character big-display-character"
+          id="restTimerMinute"
+        >
+          15
+        </h2>
+        <h2 class="clock-number big-display-character">:</h2>
+        <h2
+          class="display-character big-display-character"
+          id="restTimerSecond"
+        >
+          30
+        </h2>
+      </div>
+      <button
+        class="control-button big-display-character"
+        type="button"
+        onclick="next_state()"
+      >
+        next
+      </button>
+    </div>
+
     <script src="./utils/chatAI.js"></script>
     <script src="learning_space_script.js" type="module" defer></script>
     <!-- Include the Quill library -->
