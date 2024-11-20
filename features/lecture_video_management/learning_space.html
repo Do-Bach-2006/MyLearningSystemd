@@ -102,28 +102,29 @@
           <button class="collapsible">PROMODO Clock</button>
           <div class="content">
             <div id="promodoClock">
-              <div id="timerInput">
+              <div id="indicator">
                 <h6 class="clock-number">Work minuites</h6>
-
-                <input
-                  type="text"
-                  id="hour"
-                  class="time-character"
-                  maxlength="2"
-                />
                 <h6 class="clock-number">Rest minuites</h6>
-
+                <h6 class="clock-number">Rounds</h6>
+              </div>
+              <div id="timerInput">
                 <input
                   type="text"
-                  id="min"
+                  id="workMinutes"
                   class="time-character"
                   maxlength="2"
                 />
-                <h6 class="clock-number">Rounds</h6>
 
                 <input
                   type="text"
-                  id="min"
+                  id="restMinutes"
+                  class="time-character"
+                  maxlength="2"
+                />
+
+                <input
+                  type="text"
+                  id="rounds"
                   class="time-character"
                   maxlength="2"
                 />
@@ -137,7 +138,7 @@
                 <button
                   class="control-button"
                   type="button"
-                  onclick="start_timer()"
+                  onclick=" start_timer()"
                 >
                   start
                 </button>
@@ -146,7 +147,7 @@
                   type="button"
                   onclick="stop_timer()"
                 >
-                  stop
+                  pause
                 </button>
                 <button
                   class="control-button"
@@ -154,13 +155,6 @@
                   onclick="next_timer()"
                 >
                   next
-                </button>
-                <button
-                  class="control-button"
-                  type="button"
-                  onclick="reset_timer()"
-                >
-                  reset
                 </button>
               </div>
             </div>

@@ -1,6 +1,7 @@
 #timerInput,
 #controls,
-#timerDisplay {
+#timerDisplay,
+#indicator {
   display: flex;
   flex-direction: row;
   justify-content: center;
