@@ -1,0 +1,23 @@
+/* tool bar collapsible */
+.collapsible {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.content {
+  display: none;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #f9f9f9;
+  width: 100%; /* Occupy 80% of the screen width */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}

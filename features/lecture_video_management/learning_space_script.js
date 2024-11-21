@@ -24,7 +24,7 @@ const quill = new Quill("#editor", {
 let CURRENT_VIDEO_NAME = "?";
 let selectedVideo = null;
 
-// create button to switch between courses
+// create buttons to switch between courses
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
     courseInfo.videos.sort((stringA, stringB) => {
@@ -120,6 +120,7 @@ function save_content() {
   save_notes(CURRENT_VIDEO_NAME, editorContent);
 }
 
+// we have to assign the event . I don't know why when remove this , the script break . So don't touch it !
 const saveButton = document.getElementById("saveNote");
 saveButton.addEventListener("click", save_content);
 
