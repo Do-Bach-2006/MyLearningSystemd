@@ -1,30 +1,7 @@
 // JavaScript for collapse functionality
 const path = require("path");
+const fs = require("fs");
 const { save_notes, get_notes } = require("./utils/notes.js");
-
-const sidebar = document.getElementById("sidebar");
-const collapseBtn = document.getElementById("collapseBtn");
-
-// function for making the sidebar collapsible
-collapseBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("collapsed");
-  collapseBtn.textContent = sidebar.classList.contains("collapsed")
-    ? "Show all"
-    : "Hide all ";
-});
-
-// JavaScript for collapsible functionality
-document.querySelectorAll(".collapsible").forEach((button) => {
-  button.addEventListener("click", () => {
-    const content = button.nextElementSibling;
-    // Toggle display of content
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-});
 
 const PATH_TO_SELECTED_COURSE_JSON = path.join(
   __dirname,
@@ -38,8 +15,6 @@ const PATH_TO_COURSES_INFO_JSON = path.join(
 
 const selectedCourse = require(PATH_TO_SELECTED_COURSE_JSON);
 const coursesInfo = require(PATH_TO_COURSES_INFO_JSON);
-console.log(selectedCourse.toString());
-console.log(coursesInfo);
 
 // create the quill editor
 const quill = new Quill("#editor", {
@@ -47,11 +22,14 @@ const quill = new Quill("#editor", {
 });
 
 let CURRENT_VIDEO_NAME = "?";
+let selectedVideo = null;
 
 // create button to switch between courses
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
     courseInfo.videos.sort((stringA, stringB) => {
+      // this is a sort function to sort videos by number in it's description
+
       function getNumbers(inputString) {
         let result = [];
 
@@ -96,12 +74,18 @@ coursesInfo.forEach((courseInfo) => {
       videoLink.appendChild(title);
       sidebar.appendChild(videoLink);
 
-      // add function when we click on the video tag
+      // add function when user click on the video tag
 
       videoLink.onclick = function () {
+        // TODO: highlight the loaded videos when user selected it !
+        //videoLink.classList.add("selected");
+
+        // load the video
         const videoPlayer = document.getElementById("mainVideo");
         videoPlayer.src = video.pathToVideoURL;
+        videoPlayer.currentTime = video.lastViewTime;
 
+        // load the note for the video
         const editorContent = get_notes(video.name);
 
         CURRENT_VIDEO_NAME = video.name;
@@ -109,16 +93,20 @@ coursesInfo.forEach((courseInfo) => {
         if (editorContent) {
           quill.setContents(editorContent);
         } else {
+          // set empty contents as there is no note for the video yet
+          quill.setContents([]);
           console.error("Failed to load notes.");
         }
-        // TODO: set the role for AI for corresponding video
-        //
-        const initPrompt = `Imagine that you are a professional who is likely to answer everything the student ask. I'm a student with little or no knowledge , watching a video name ${video.name} , I want you to assist me learning it . Please respond in simple text format without any markdown decoration and in details way as you instruct me `;
 
+        // create the corresponding prompt for the video
+        const initPrompt = `Imagine that you are a professional who is likely to answer everything the student ask. I'm a student with little or no knowledge , watching a video name ${video.name} , I want you to assist me learning it . Please respond in simple text format without any markdown decoration and in details way as you instruct me `;
         const respond = getAIRespond(initPrompt);
 
         console.log(initPrompt);
         console.log(respond);
+
+        // mark the video is selected for later saving
+        selectedVideo = video;
       };
     });
   }
@@ -134,3 +122,29 @@ function save_content() {
 
 const saveButton = document.getElementById("saveNote");
 saveButton.addEventListener("click", save_content);
+
+// TODO: the save note button should be triggered when saving too ! and when the user click to return back , the autoSave should be called too !
+// TODO: put these auto save in another file , then we pass the argument into it !
+function extractTimer() {
+  const videoPlayer = document.getElementById("mainVideo");
+  const currentTime = videoPlayer.currentTime;
+
+  return currentTime;
+}
+
+function autoSaveTimer() {
+  if (selectedVideo === null) {
+    console.log("no video saved");
+    return;
+  }
+
+  selectedVideo.lastViewTime = extractTimer();
+  console.log("auto save timer called");
+  console.log(coursesInfo);
+  fs.writeFileSync(
+    PATH_TO_COURSES_INFO_JSON,
+    JSON.stringify(coursesInfo, null, 4),
+  );
+}
+
+setInterval(autoSaveTimer, 10000);

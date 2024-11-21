@@ -258,3 +258,8 @@ iframe {
 .chatbox button:hover {
   background-color: #0056b3;
 }
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}

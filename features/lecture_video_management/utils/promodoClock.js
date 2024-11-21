@@ -51,10 +51,8 @@ function get_time() {
 
   // Subscribe to timer events
   newTimer.subscribe((currentTime) => {
-    console.log("jello?");
     if (currentTime.status === "work") {
       workSubscribe(currentTime);
-      console.log("here!");
     } else if (currentTime.status === "break") {
       restSubscribe(currentTime);
     }
@@ -66,9 +64,6 @@ function get_time() {
 function workSubscribe(currentTime) {
   const timerMinuteElement = document.getElementById("timerMinute");
   const timerSecondElement = document.getElementById("timerSecond");
-  console.log(currentTime);
-  console.log(timerMinuteElement);
-  console.log(timerSecondElement);
   timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
   timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds);
 
@@ -84,9 +79,6 @@ function workSubscribe(currentTime) {
 function restSubscribe(currentTime) {
   const timerMinuteElement = document.getElementById("restTimerMinute");
   const timerSecondElement = document.getElementById("restTimerSecond");
-  console.log(currentTime);
-  console.log(timerMinuteElement);
-  console.log(timerSecondElement);
 
   timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
   timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds); //currentTime.seconds;
