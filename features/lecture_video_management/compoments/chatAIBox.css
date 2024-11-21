@@ -42,7 +42,7 @@
   border-top: 1px solid #ccc;
 }
 
-.chatbox textarea {
+.chat-box textarea {
   flex: 1;
   resize: none;
   height: 100%;
@@ -51,7 +51,7 @@
   border-radius: 5px;
 }
 
-.chatbox button {
+.chat-box button {
   padding: 10px 15px;
   background-color: #007bff;
   color: white;

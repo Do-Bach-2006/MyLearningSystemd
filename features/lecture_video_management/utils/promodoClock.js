@@ -27,7 +27,7 @@ function beautifulTimeCharacter(timeCharacter) {
 // TODO: implement the round count too !
 // when the round count is over, stop the timer and congrast the user ( using different overlay and force them to turn of the learning )
 
-function get_time() {
+function getTime() {
   const workMinuiteElement = document.getElementById("workMinutes");
   const restMinuiteElement = document.getElementById("restMinutes");
   const roundsElement = document.getElementById("rounds");
@@ -94,15 +94,15 @@ function restSubscribe(currentTime) {
   // TODO: implement music player here !
 }
 
-function start_timer() {
+function startTimer() {
   // stop the current running timer
   timer.stop();
-  timer = get_time();
+  timer = getTime();
   timer.start();
   stopState = false;
 }
 
-function stop_timer() {
+function stopTimer() {
   if (!stopState) {
     stopState = true;
     timer.pause();
@@ -112,10 +112,10 @@ function stop_timer() {
   }
 }
 
-function next_state() {
+function nextState() {
   timer.next();
 }
 
-function reset_timer() {
+function resetTimer() {
   timer.stop();
 }

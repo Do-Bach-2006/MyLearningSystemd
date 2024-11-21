@@ -48,7 +48,7 @@
           <button class="collapsible">Note</button>
           <div class="content">
             <div id="editor"></div>
-            <button id="saveNote" onclick="save_content()">Save Note</button>
+            <button id="saveNote" onclick="saveContent()">Save Note</button>
           </div>
 
           <!-- Thesaurus Collapsible Section -->
@@ -99,7 +99,7 @@
           <button class="collapsible">TODO List</button>
           <div class="content">
             <div id="TODOBox">
-              <button onclick="create_new_TODO()">add new</button>
+              <button onclick="createNewTODO()">add new</button>
             </div>
           </div>
 
@@ -142,21 +142,21 @@
                 <button
                   class="control-button"
                   type="button"
-                  onclick=" start_timer()"
+                  onclick=" startTimer()"
                 >
                   start
                 </button>
                 <button
                   class="control-button"
                   type="button"
-                  onclick="stop_timer()"
+                  onclick="stopTimer()"
                 >
                   pause
                 </button>
                 <button
                   class="control-button"
                   type="button"
-                  onclick="next_state()"
+                  onclick="nextState()"
                 >
                   next
                 </button>
@@ -187,7 +187,7 @@
       <button
         class="control-button big-display-character"
         type="button"
-        onclick="next_state()"
+        onclick="nextState()"
       >
         next
       </button>

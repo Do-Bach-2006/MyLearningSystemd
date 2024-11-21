@@ -113,7 +113,7 @@ coursesInfo.forEach((courseInfo) => {
 });
 
 // function for save notes
-function save_content() {
+function saveContent() {
   console.log("button clicked");
   const editorContent = quill.getContents();
 
@@ -122,7 +122,7 @@ function save_content() {
 
 // we have to assign the event . I don't know why when remove this , the script break . So don't touch it !
 const saveButton = document.getElementById("saveNote");
-saveButton.addEventListener("click", save_content);
+saveButton.addEventListener("click", saveContent);
 
 // TODO: the save note button should be triggered when saving too ! and when the user click to return back , the autoSave should be called too !
 // TODO: put these auto save in another file , then we pass the argument into it !
@@ -136,16 +136,17 @@ function extractTimer() {
 function autoSaveTimer() {
   if (selectedVideo === null) {
     console.log("no video saved");
+
     return;
   }
 
   selectedVideo.lastViewTime = extractTimer();
-  console.log("auto save timer called");
-  console.log(coursesInfo);
+
   fs.writeFileSync(
     PATH_TO_COURSES_INFO_JSON,
     JSON.stringify(coursesInfo, null, 4),
   );
 }
 
+// auto save time every 10 seconds
 setInterval(autoSaveTimer, 10000);

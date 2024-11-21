@@ -37,7 +37,7 @@ function newTODODiv() {
   return TODO;
 }
 
-function create_new_TODO() {
+function createNewTODO() {
   const TODOBox = document.getElementById("TODOBox");
   TODOBox.appendChild(newTODODiv());
 }
