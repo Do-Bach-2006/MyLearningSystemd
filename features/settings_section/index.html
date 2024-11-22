@@ -2,18 +2,33 @@
 <html>
   <head>
     <title>settings</title>
-    <link href="styles.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
     <button onclick="window.location.href = '../../index.html';">return</button>
-    <div id="inputSection">
+    <div id="geiminiInputSection">
       <hr />
-      <h2>GOOGLE GEIMINI API KEY</h2>
-      <input id="apiInput" type="password" />
-      <button onclick="save_api_key()">save API key</button>
+      <div class="section-box">
+        <h2>GOOGLE GEIMINI API KEY</h2>
+        <input id="apiInput" type="password" />
+        <button onclick="saveApiKey()">save API key</button>
+      </div>
+      <div class="section-box">
+        <h2 for="class">MODEL:</h2>
+        <select id="modelSelect">
+          <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+          <option value="gemini-1.5-flash-8b">Gemini 1.5 Flash-8B</option>
+          <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+          <option value="gemini-1.0-pro">Gemini 1.0 Pro</option>
+          <option value="text-embedding-004">Text Embedding</option>
+          <option value="aqa">AQA</option>
+        </select>
+      </div>
       <hr />
     </div>
 
     <script src="script.js" defer></script>
+    <script src="utils/GeiminiAPISaving.js" defer></script>
+    <script src="utils/geiminiModelSelecting.js" defer></script>
   </body>
 </html>
