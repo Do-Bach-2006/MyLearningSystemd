@@ -53,11 +53,8 @@ coursesInfo.forEach((courseInfo) => {
 
       for (let i = 0; i < Math.min(numbersA.length, numbersB.length); i++) {
         if (numbersA[i] > numbersB[i]) {
-          console.log(`${numbersA[i]} > ${numbersB[i]} true`);
           return 1;
         } else if (numbersA[i] < numbersB[i]) {
-          console.log(`${numbersA[i]} > ${numbersB[i]} false`);
-
           return -1;
         }
       }
@@ -99,11 +96,13 @@ coursesInfo.forEach((courseInfo) => {
         }
 
         // create the corresponding prompt for the video
-        const initPrompt = `Imagine that you are a professional who is likely to answer everything the student ask. I'm a student with little or no knowledge , watching a video name ${video.name} , I want you to assist me learning it . Please respond in simple text format without any markdown decoration and in details way as you instruct me `;
-        const respond = getAIRespond(initPrompt);
-
-        console.log(initPrompt);
-        console.log(respond);
+        const initPrompt = `
+            Imagine that you are a professional who is likely to answer everything the student ask.
+            I'm a student with little or no knowledge , watching a video name ${video.name} , I want you to assist me in learning while I watch the video.
+            Please respond in simple text format without any markdown decoration and in details way as you answer my questions . is it ok ? `;
+        const inputElement = document.getElementById("chatAIuserInput");
+        inputElement.value = initPrompt;
+        generateAnswer();
 
         // mark the video is selected for later saving
         selectedVideo = video;
