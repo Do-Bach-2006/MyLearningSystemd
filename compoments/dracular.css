@@ -1,0 +1,28 @@
+:root {
+  --dracular-background: #282a36;
+  --dracular-foreground: #f8f8f2;
+  --dracular-current-line: #44475a;
+  --dracular-comment: #6272a4;
+  --dracular-cursor: #f8f8f2;
+  --dracular-selection: #44475a;
+  --dracular-red: #ff5555;
+  --dracular-green: #50fa7b;
+  --dracular-yellow: #f1fa8c;
+  --dracular-blue: #bd93f9;
+  --dracular-purple: #ff79c6;
+  --dracular-cyan: #8be9fd;
+  --dracular-white: #f8f8f2;
+  --dracular-black: #282a36;
+  --dracular-gray: #44475a;
+  --dracular-orange: #ffb86c;
+  --dracular-pink: #ff79c6;
+  --dracular-bright-red: #ff6e6e;
+  --dracular-bright-green: #69ff94;
+  --dracular-bright-yellow: #ffff94;
+  --dracular-bright-blue: #d6acff;
+  --dracular-bright-purple: #ff92df;
+  --dracular-bright-cyan: #a4ffff;
+  --dracular-bright-white: #f8f8f2;
+  --dracular-bright-black: #282a36;
+  --dracular-bright-gray: #44475a;
+}

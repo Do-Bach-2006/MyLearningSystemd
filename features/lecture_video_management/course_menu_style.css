@@ -1,3 +1,6 @@
+@import "../../compoments/dracular.css";
+@import "../../compoments/fonts.css";
+
 body,
 head {
   margin: 0;
@@ -25,7 +28,8 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: blue; /* Optional: background color */
+  background-color: var(--dracular-background); /* Optional: background color */
+  color: var(--dracular-foreground); /* Optional: text color */
   width: 100%;
   height: 90%;
   overflow-y: scroll;
@@ -41,7 +45,7 @@ h4 {
 .course {
   justify-content: center;
   align-items: center;
-  background-color: lightblue;
+  background-color: var(--nord3);
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
@@ -50,7 +54,7 @@ h4 {
 }
 
 .course:hover {
-  background-color: darkblue;
+  background-color: var(--nord13);
 }
 
 .corner-button {

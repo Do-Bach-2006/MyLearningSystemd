@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "3270";
+  src: url("../assests/fonts/3270NerdFontMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "BigBlueTerm";
+  src: url("../assests/fonts/BigBlueTerm437NerdFontMono-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "HeavyData";
+  src: url("../assests/fonts/HeavyDataNerdFont-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "UbuntuSans";
+  src: url("../assests/fonts/UbuntuSansMonoNerdFontMono-Regular.ttf")
+    format("truetype");
+}
