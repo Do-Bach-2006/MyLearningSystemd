@@ -50,16 +50,16 @@ async function generateAnswer() {
   outputElement.appendChild(newMessage);
 
   // create a response message
-  // const newAnswerContainer = document.createElement("div");
-  // newAnswerContainer.classList.add("message");
+  const newAnswerContainer = document.createElement("div");
+  newAnswerContainer.classList.add("message");
 
   const newAnswer = document.createElement("md-block");
   newAnswer.classList.add("message");
   newAnswer.textContent = await getAIRespond(prompt);
 
-  // newAnswerContainer.appendChild(newAnswer);
+  newAnswerContainer.appendChild(newAnswer);
 
-  // outputElement.appendChild(newAnswerContainer);
+  outputElement.appendChild(newAnswerContainer);
 
-  outputElement.appendChild(newAnswer);
+  // outputElement.appendChild(newAnswer);
 }
