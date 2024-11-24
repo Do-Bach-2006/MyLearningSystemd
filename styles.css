@@ -1,3 +1,6 @@
+@import url("./compoments/themes.css");
+@import url("./compoments/fonts.css");
+
 html,
 body {
   height: 100%;
@@ -13,7 +16,7 @@ body {
 .container {
   height: 100%; /* Full viewport height */
   width: 100%; /* Full viewport width */
-  background-image: url("./assests/img/while_true.png");
+  background-image: url("./assests/img/Waves\ 1.png");
   background-size: cover; /* Cover the entire container */
   background-position: center; /* Center the background image */
   display: flex;
@@ -28,36 +31,70 @@ body {
   flex-direction: column;
   gap: 30px; /* 30px spacing between buttons */
   width: 50%; /* Optional: Make the button grid 50% of container width */
+  height: 50%;
 }
 
-/* CSS */
 .button-54 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-family: "Ubuntu Sans";
+  font-size: 8vh;
+  font-weight: 400;
   letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  cursor: pointer;
-  border: 3px solid;
   padding: 0.25em 0.5em;
-  box-shadow:
-    1px 1px 0px 0px,
-    2px 2px 0px 0px,
-    3px 3px 0px 0px,
-    4px 4px 0px 0px,
-    5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  color: var(--foreground);
+  border: 3px solid;
+  background-color: transparent;
+  border: 3px solid var(--comment);
+  width: 100%;
+  height: 100%;
+}
+
+.button-54:hover {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .button-54:active {
   box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
+  top: 10px;
+  left: 10px;
+  background-color: var(--selection);
 }
+
+/**/
+/* /* CSS */
+
+/* .button-54 { */
+/*   font-family: "Open Sans", sans-serif; */
+/*   font-size: 16px; */
+/*   letter-spacing: 2px; */
+/*   text-decoration: none; */
+/*   text-transform: uppercase; */
+/*   color: #000; */
+/*   cursor: pointer; */
+/*   border: 3px solid; */
+/*   padding: 0.25em 0.5em; */
+/*   box-shadow: */
+/*     1px 1px 0px 0px, */
+/*     2px 2px 0px 0px, */
+/*     3px 3px 0px 0px, */
+/*     4px 4px 0px 0px, */
+/*     5px 5px 0px 0px; */
+/*   position: relative; */
+/*   user-select: none; */
+/*   -webkit-user-select: none; */
+/*   touch-action: manipulation; */
+/*   width: 100%; */
+/*   height: 100%; */
+/* } */
+/**/
+/* .button-54:hover { */
+/*   background-color: var(--gray); */
+/* } */
+/**/
+/* .button-54:active { */
+/*   box-shadow: 0px 0px 0px 0px; */
+/*   top: 5px; */
+/*   left: 5px; */
+/* } */
 
 @media (min-width: 768px) {
   .button-54 {
@@ -69,4 +106,21 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 10vh;
+  color: var(--foreground);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "3270";
+}
+
+#settings:hover {
+  color: var(--selection);
+}
+
+h1 {
+  color: var(--foreground);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 10vh;
 }

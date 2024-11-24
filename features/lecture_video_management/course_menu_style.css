@@ -1,4 +1,4 @@
-@import "../../compoments/dracular.css";
+@import "../../compoments/themes.css";
 @import "../../compoments/fonts.css";
 
 body,
@@ -23,13 +23,33 @@ h1 {
 h4 {
   text-align: center;
 }
+/**/
+/* #courses-container { */
+/*   display: grid; /* Change from flex to grid */
+
+/*   grid-template-columns: repeat( */
+/*     auto-fit, */
+/*     minmax(20px, 1fr) */
+/*   );  Create responsive columns */
+/*   gap: 16px; /* Add space between grid items */
+/*   justify-content: center; /* Center items horizontally */
+/*   align-items: start; /* Align items at the start of rows */
+/*   background-color: var(--background); /* Optional: background color */
+/*   color: var(--foreground); /* Optional: text color */
+/*   width: 100%; */
+/*   height: 90%; */
+/*   overflow-y: scroll; */
+/*   padding: 16px; /* Optional: Add padding */
+/*   margin: 0; */
+/*   position: relative; */
+/* } */
 
 #courses-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--dracular-background); /* Optional: background color */
-  color: var(--dracular-foreground); /* Optional: text color */
+  background-color: var(--background); /* Optional: background color */
+  color: var(--foreground); /* Optional: text color */
   width: 100%;
   height: 90%;
   overflow-y: scroll;
@@ -38,23 +58,30 @@ h4 {
   position: relative;
 }
 
-.course-container::-webkit-scrollbar {
+#courses-container::-webkit-scrollbar {
   width: 6px; /* Adjust scrollbar width */
 }
 
 .course {
   justify-content: center;
   align-items: center;
-  background-color: var(--nord3);
+  background-color: var(--background);
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
   width: 30%;
   height: 100px;
+  word-wrap: break-word; /* Enables wrapping at any word */
+  overflow-wrap: break-word; /* Modern equivalent for better compatibility */
+}
+
+.course * {
+  word-wrap: break-word; /* Enables wrapping at any word */
+  overflow-wrap: break-word; /* Modern equivalent for better compatibility */
 }
 
 .course:hover {
-  background-color: var(--nord13);
+  background-color: var(--selection);
 }
 
 .corner-button {

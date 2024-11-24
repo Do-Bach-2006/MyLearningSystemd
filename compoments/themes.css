@@ -1,0 +1,30 @@
+/* default theme is dracular */
+
+:root {
+  --background: #282a36;
+  --foreground: #f8f8f2;
+  --current-line: #44475a;
+  --comment: #6272a4;
+  --cursor: #f8f8f2;
+  --selection: #44475a;
+  --red: #ff5555;
+  --green: #50fa7b;
+  --yellow: #f1fa8c;
+  --blue: #bd93f9;
+  --purple: #ff79c6;
+  --cyan: #8be9fd;
+  --white: #f8f8f2;
+  --black: #282a36;
+  --gray: #44475a;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --bright-red: #ff6e6e;
+  --bright-green: #69ff94;
+  --bright-yellow: #ffff94;
+  --bright-blue: #d6acff;
+  --bright-purple: #ff92df;
+  --bright-cyan: #a4ffff;
+  --bright-white: #f8f8f2;
+  --bright-black: #282a36;
+  --bright-gray: #44475a;
+}
