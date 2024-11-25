@@ -1,7 +1,7 @@
 {
-  "name": "apathetic-industry-create-k2t99",
-  "productName": "apathetic-industry-create-k2t99",
-  "description": "My Electron application description",
+  "name": "MyLearningSystemd",
+  "productName": "MyLearningSystemd",
+  "description": "A simple project to manage my learning process",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
@@ -14,6 +14,7 @@
     "delta-markdown-for-quill": "^0.0.9",
     "markdown-to-quill-delta": "^0.7.0",
     "md-editor-v3": "^5.0.0",
+    "nord": "^0.2.1",
     "quill": "^2.0.2",
     "quill-delta-to-markdown": "^0.6.0",
     "standsit-timer": "^3.1.0",

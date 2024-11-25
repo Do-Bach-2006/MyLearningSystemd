@@ -1,7 +1,3 @@
-//import { get_all_courses } from "./utils/get_course_directories.mjs";
-
-//const courses = get_all_courses();
-
 const path = require("path");
 const fs = require("fs");
 
@@ -20,6 +16,8 @@ function create_new_course_button(course_object) {
 
   div.onclick = () => {
     console.log("clicked on", h4.textContent);
+
+    // FIXME: fix the path here !
 
     const PATH_TO_SELECTED_COURSE_JSON = path.join(
       __dirname,
@@ -43,6 +41,8 @@ function create_new_course_button(course_object) {
 }
 
 console.log(__dirname);
+
+// FIXME: fix the path here !
 
 const PATH_TO_COURSES_JSON = path.join(
   __dirname,

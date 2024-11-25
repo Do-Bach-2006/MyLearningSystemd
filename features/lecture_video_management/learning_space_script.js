@@ -3,6 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const { save_notes, get_notes } = require("./utils/notes.js");
 
+// TODO: fix the database here !
+
 const PATH_TO_SELECTED_COURSE_JSON = path.join(
   __dirname,
   "selected_course.json",

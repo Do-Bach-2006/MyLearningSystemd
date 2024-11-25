@@ -42,35 +42,12 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+app.whenReady().then(() => {
+  // set up event listener for 'get-user-data-path'
+  ipcMain.handle("get-user-data-path", () => app.getPath("userData"));
 
-// const { app, BrowserWindow } = require('electron');
-//
-// function createWindow(x, y, domainName) {
-//   const win = new BrowserWindow({
-//     width: 400,
-//     height: 300,
-//     x: x,
-//     y: y,
-//   });
-//
-//   win.loadURL(domainName);
-// }
-//
-// app.whenReady().then(() => {
-//   createWindow(0, 0, 'https://www.youtube.com/watch?v=omRVkCpHbbQ');       // Top-left window
-//   createWindow(400, 0, "https://chatgpt.com/");    // Top-right window
-//   createWindow(0, 300, 'https://www.youtube.com/');     // Bottom-left window
-//   createWindow(400, 300, 'https://www.electronjs.org/');  // Bottom-right window
-// });
-//
-// app.on('window-all-closed', () => {
-//   if (process.platform !== 'darwin') app.quit();
-// });
-//
-//
-
-require("./utils/get_course_directories.js");
-require("./utils/get_course_informations.js");
-console.log("hello from main.js");
+  // Set up the event listener for 'get-temp-dir'
+  ipcMain.handle("get-temp-dir", () => {
+    app.getPath("temp");
+  });
+});
