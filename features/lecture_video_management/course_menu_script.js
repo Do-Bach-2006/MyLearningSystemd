@@ -1,61 +1,70 @@
 const path = require("path");
 const fs = require("fs");
+const { ipcRenderer } = require("electron");
 
-const courses_container = document.getElementById("courses-container");
-
-function create_new_course_button(course_object) {
+function createFrontendButton(displayContent) {
   //create the div
   const div = document.createElement("div");
   div.classList.add("course");
 
   //create the content
   const h4 = document.createElement("h4");
-  h4.textContent = course_object.name;
-
+  h4.textContent = displayContent;
   div.appendChild(h4);
 
+  console.log("created", h4.textContent);
+
+  return div;
+}
+
+function createNewCourseButton(courseName, PATH_TO_SELECTED_COURSE_JSON) {
+  const div = createFrontendButton(courseName);
+
+  // add function when user click on the course
   div.onclick = () => {
-    console.log("clicked on", h4.textContent);
-
-    // FIXME: fix the path here !
-
-    const PATH_TO_SELECTED_COURSE_JSON = path.join(
-      __dirname,
-      "selected_course.json",
-    );
-
+    // save the selected course
     try {
       fs.writeFileSync(
         PATH_TO_SELECTED_COURSE_JSON,
-        JSON.stringify([h4.textContent]),
+        JSON.stringify([courseName]),
       );
       console.log("File written successfully");
     } catch (error) {
       console.error("Error writing file:", error);
     }
 
+    // move to next page
     window.location.href = "./learning_space.html";
   };
 
   return div;
 }
 
-console.log(__dirname);
+async function initCall() {
+  PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
+  PATH_TO_TEMPT_DATABASE = await ipcRenderer.invoke("get-temp-dir");
 
-// FIXME: fix the path here !
+  console.log(PATH_TO_USER_DATABASE);
+  console.log(PATH_TO_TEMPT_DATABASE);
 
-const PATH_TO_COURSES_JSON = path.join(
-  __dirname,
-  "../../database/courses.json",
-);
+  const PATH_TO_COURSES_INFO_JSON = path.join(
+    PATH_TO_USER_DATABASE,
+    "courses_info.json",
+  );
+  const PATH_TO_SELECTED_COURSE_JSON = path.join(
+    PATH_TO_TEMPT_DATABASE,
+    "selected_course.json",
+  );
 
-const courses = JSON.parse(fs.readFileSync(PATH_TO_COURSES_JSON));
+  const coursesInfo = JSON.parse(fs.readFileSync(PATH_TO_COURSES_INFO_JSON));
 
-courses.forEach((course) => {
-  courses_container.appendChild(create_new_course_button(course));
-  console.log("i was here !");
-});
+  const courses_container = document.getElementById("courses-container");
 
-function return_to_main_menu() {
-  window.location.href = "../../index.html";
+  // key is the courseName : courseObject
+  for (const [courseName, courseObject] of Object.entries(coursesInfo)) {
+    const div = createNewCourseButton(courseName, PATH_TO_SELECTED_COURSE_JSON);
+    courses_container.appendChild(div);
+  }
 }
+
+initCall();

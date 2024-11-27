@@ -3,13 +3,13 @@ const path = require("path");
 const fs = require("fs");
 const { save_notes, get_notes } = require("./utils/notes.js");
 
-// TODO: fix the database here !
-
+// FIXME: fix the path here!
 const PATH_TO_SELECTED_COURSE_JSON = path.join(
   __dirname,
   "selected_course.json",
 );
 
+// FIXME: fix the path here
 const PATH_TO_COURSES_INFO_JSON = path.join(
   __dirname,
   "../../database/courses_info.json",
@@ -25,8 +25,13 @@ const quill = new Quill("#editor", {
 
 let CURRENT_VIDEO_NAME = "?";
 let selectedVideo = null;
+// TODO : save the current selected div button for styling purpose
 
 // create buttons to switch between courses
+// FIXME: the coursesInfo now have the structure below , please change the loop to fit that type of object
+// {
+//    courseName : courseObject
+// }
 coursesInfo.forEach((courseInfo) => {
   if (courseInfo.name === selectedCourse[0]) {
     courseInfo.videos.sort((stringA, stringB) => {

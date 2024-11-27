@@ -45,9 +45,6 @@ app.on("window-all-closed", function () {
 app.whenReady().then(() => {
   // set up event listener for 'get-user-data-path'
   ipcMain.handle("get-user-data-path", () => app.getPath("userData"));
-
-  // Set up the event listener for 'get-temp-dir'
-  ipcMain.handle("get-temp-dir", () => {
-    app.getPath("temp");
-  });
+  // set up the event listener for 'get-temp-dir'
+  ipcMain.handle("get-temp-dir", () => app.getPath("temp"));
 });
