@@ -22,10 +22,10 @@ async function initialize() {
    *      coursePath : string
    *      videos :
    *      {
-   *          videoName : {
-   *              videoPath : string,
-   *              videoLastViewTime : number
-   *              videoProgress : number
+   *          name : {
+   *              path : string,
+   *              lastViewTime : number
+   *              progress : number
    *          }
    *      }
    *    }
@@ -77,9 +77,9 @@ async function initialize() {
           // if this is a new video, we add it
           if (courseInfo.videos[videoName] === undefined) {
             courseInfo.videos[videoName] = {
-              videoPath: PATH_TO_FILE,
-              videoLastViewTime: 0,
-              videoProgress: 0,
+              path: PATH_TO_FILE,
+              lastViewTime: 0,
+              progress: 0,
             };
           }
         }
@@ -93,7 +93,7 @@ async function initialize() {
 
       if (courseInfo === undefined) {
         courseInfo = {
-          coursePath: COURSE_PATH,
+          path: COURSE_PATH,
           videos: {},
         };
         coursesInfo[courseName] = courseInfo;

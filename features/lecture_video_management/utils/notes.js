@@ -34,6 +34,7 @@ const fs = require("fs");
 const path = require("path");
 const { fromDelta, toDelta } = require("delta-markdown-for-quill");
 const { deltaToMarkdown } = require("quill-delta-to-markdown");
+const { ipcRenderer } = require("electron");
 
 const PATH_TO_NOTES_DATABSE = path.join(
   __dirname,
@@ -46,25 +47,33 @@ const PATH_TO_NOTES_DATABSE = path.join(
 
 console.log(PATH_TO_NOTES_DATABSE);
 
-function getPathToVideoNote(videoName) {
+async function getPathToVideoNote(videoName) {
+  const PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
   // cut off the .mp4
   let name = videoName.slice(0, -4);
 
+  const PATH_TO_NOTES_DATABASE = path.join(PATH_TO_USER_DATABASE, "notes");
+
+  // create new notes databse if not exist
+  if (!fs.existsSync(PATH_TO_NOTES_DATABASE)) {
+    fs.mkdirSync(PATH_TO_NOTES_DATABASE);
+  }
+
   const PATH_TO_VIDEO_NOTES = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "database",
+    PATH_TO_USER_DATABASE,
     "notes",
     `${name}.md`,
   );
 
+  if (!fs.existsSync(PATH_TO_VIDEO_NOTES)) {
+    fs.writeFileSync(PATH_TO_VIDEO_NOTES, "");
+  }
+
   return PATH_TO_VIDEO_NOTES;
 }
 
-function save_notes(videoName, deltaContent) {
-  const PATH_TO_VIDEO_NOTES = getPathToVideoNote(videoName);
+async function save_notes(videoName, deltaContent) {
+  const PATH_TO_VIDEO_NOTES = await getPathToVideoNote(videoName);
 
   console.log(PATH_TO_VIDEO_NOTES);
 
@@ -79,8 +88,8 @@ function save_notes(videoName, deltaContent) {
   }
 }
 
-function get_notes(videoName) {
-  const PATH_TO_VIDEO_NOTES = getPathToVideoNote(videoName);
+async function get_notes(videoName) {
+  const PATH_TO_VIDEO_NOTES = await getPathToVideoNote(videoName);
   try {
     const markdownContent = fs.readFileSync(PATH_TO_VIDEO_NOTES, "utf-8");
     return toDelta(markdownContent);

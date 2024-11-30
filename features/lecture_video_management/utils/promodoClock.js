@@ -61,6 +61,12 @@ function getTime() {
   return newTimer;
 }
 
+// FIXME: the video start or video stop SHOULD NOT BE IN THE  SUBSCRIBE FUNCTIONS!
+//we should trigger start or stop video in the changing function !
+function isVideoPlaying(video) {
+  return !video.paused && !video.ended && video.readyState > 2;
+}
+
 function workSubscribe(currentTime) {
   const timerMinuteElement = document.getElementById("timerMinute");
   const timerSecondElement = document.getElementById("timerSecond");

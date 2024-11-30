@@ -41,8 +41,8 @@ function createNewCourseButton(courseName, PATH_TO_SELECTED_COURSE_JSON) {
 }
 
 async function initCall() {
-  PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
-  PATH_TO_TEMPT_DATABASE = await ipcRenderer.invoke("get-temp-dir");
+  const PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
+  const PATH_TO_TEMPT_DATABASE = await ipcRenderer.invoke("get-temp-dir");
 
   console.log(PATH_TO_USER_DATABASE);
   console.log(PATH_TO_TEMPT_DATABASE);
