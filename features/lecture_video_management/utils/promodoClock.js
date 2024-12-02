@@ -63,9 +63,8 @@ function getTime() {
 
 // FIXME: the video start or video stop SHOULD NOT BE IN THE  SUBSCRIBE FUNCTIONS!
 //we should trigger start or stop video in the changing function !
-function isVideoPlaying(video) {
-  return !video.paused && !video.ended && video.readyState > 2;
-}
+
+let oneTimePause = false;
 
 function workSubscribe(currentTime) {
   const timerMinuteElement = document.getElementById("timerMinute");
@@ -77,9 +76,14 @@ function workSubscribe(currentTime) {
   // Hide the overlay
   overlayElement.classList.remove("show");
 
-  // start the playing video
-  const videoElement = document.getElementById("mainVideo");
-  videoElement.play();
+  // start the playing video once !
+  // we have to have this variable to avoid the video start when the user click pause
+  // this code make sure that the video only start once !
+  if (oneTimePause) {
+    oneTimePause = false;
+    const videoElement = document.getElementById("mainVideo");
+    videoElement.play();
+  }
 }
 
 function restSubscribe(currentTime) {
@@ -97,6 +101,7 @@ function restSubscribe(currentTime) {
   // stop the playing video
   const videoElement = document.getElementById("mainVideo");
   videoElement.pause();
+  oneTimePause = true; // reset the one time pause variable for later workSubscribe
   // TODO: implement music player here !
 }
 

@@ -117,15 +117,6 @@ async function initialize() {
 
       CURRENT_VIDEO_NAME = videoName;
 
-      // create the corresponding prompt for the video
-      const initPrompt = `
-            Imagine that you are a professional who is likely to answer everything the student ask.
-            I'm a student with little or no knowledge , watching a video name ${videoName} , I want you to assist me in learning while I watch the video.
-            Please respond in simple text format without any markdown decoration and in details way as you answer my questions . is it ok ? `;
-      const inputElement = document.getElementById("chatAIuserInput");
-      inputElement.value = initPrompt;
-      generateAnswer();
-
       // mark the selected video for later saving view progress
       selectedVideo = videoObject;
     };
