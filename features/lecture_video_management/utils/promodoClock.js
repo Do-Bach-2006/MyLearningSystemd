@@ -2,7 +2,7 @@ const Timer = require("timer-for-pomodoro");
 
 // Create a Timer instance with desired time values
 let timer = new Timer(25, 5, 4); // 25 minutes of work, 5 minutes of break, 4 rounds
-let stopState = true;
+let stopState = null;
 
 // set up input validation
 const inputs = document.querySelectorAll(".time-character");
@@ -61,16 +61,16 @@ function getTime() {
   return newTimer;
 }
 
-// FIXME: the video start or video stop SHOULD NOT BE IN THE  SUBSCRIBE FUNCTIONS!
-//we should trigger start or stop video in the changing function !
-
 let oneTimePause = false;
 
 function workSubscribe(currentTime) {
   const timerMinuteElement = document.getElementById("timerMinute");
   const timerSecondElement = document.getElementById("timerSecond");
+  const timerRoundElement = document.getElementById("timerRound");
   timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
   timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds);
+  timerRoundElement.textContent = currentTime.rounds;
+  console.log(currentTime.rounds);
 
   const overlayElement = document.getElementById("fullScreenOverlay");
   // Hide the overlay
@@ -91,8 +91,7 @@ function restSubscribe(currentTime) {
   const timerSecondElement = document.getElementById("restTimerSecond");
 
   timerMinuteElement.textContent = beautifulTimeCharacter(currentTime.minutes);
-  timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds); //currentTime.seconds;
-
+  timerSecondElement.textContent = beautifulTimeCharacter(currentTime.seconds);
   const overlayElement = document.getElementById("fullScreenOverlay");
 
   // Show the overlay
@@ -114,12 +113,23 @@ function startTimer() {
 }
 
 function stopTimer() {
+  if (stopState === null) {
+    return;
+  }
+
   if (!stopState) {
     stopState = true;
     timer.pause();
+
+    // change the display between pause and continue
+    const pauseButton = document.getElementById("pauseButton");
+    pauseButton.textContent = "󱫠";
   } else {
     stopState = false;
     timer.start();
+
+    const pauseButton = document.getElementById("pauseButton");
+    pauseButton.textContent = "󱫞";
   }
 }
 

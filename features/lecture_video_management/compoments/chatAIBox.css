@@ -1,7 +1,10 @@
+@import url("../../../compoments/fonts.css");
+@import url("../../../compoments/themes.css");
+
 .chat-box {
   width: 100%;
   height: 500px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--yellow);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -13,7 +16,7 @@
   flex: 4; /* 80% of the height */
   overflow-y: auto;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--black);
   overflow-x: hidden;
 }
 
@@ -22,7 +25,7 @@
   margin: 5px 0;
   width: 100%;
   border-radius: 5px;
-  background-color: #e6e6e6;
+  background-color: var(--white);
   align-self: flex-start; /* Aligns to the left */
   text-align: left; /* Ensures text is aligned to the left */
   word-wrap: break-word; /* Break long words */
@@ -37,7 +40,7 @@
 }
 
 .message.user {
-  background-color: #d1e7dd;
+  background-color: var(--yellow);
   align-self: flex-end; /* Aligns to the right */
   text-align: right; /* Ensures text is aligned to the right */
   font-family: NerdFont;
@@ -49,8 +52,8 @@
   align-items: center;
   gap: 5px;
   padding: 5px;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
+  background-color: var(--gray);
+  border-top: 1px solid var(--black);
 }
 
 .chat-box textarea {
@@ -58,19 +61,30 @@
   resize: none;
   height: 100%;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: var(--yellow);
   border-radius: 5px;
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: "3270";
+  font-size: 1.8vh;
 }
 
-.chat-box button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
+#sendButton {
+  width: 3vh;
+  height: 3vh;
+  border: transparent;
+  background-color: transparent;
   cursor: pointer;
+  font-size: 200%;
+  color: var(--yellow);
+  font-family: "3270";
 }
 
-.chatbox button:hover {
-  background-color: #0056b3;
+#sendButton:hover {
+  text-shadow:
+    0 0 5px var(--bright-yellow),
+    0 0 10px var(--bright-yellow),
+    0 0 15px var(--bright-yellow),
+    0 0 20px var(--bright-yellow),
+    0 0 25px var(--bright-yellow); /* Multiple layers for the glow effect */
 }

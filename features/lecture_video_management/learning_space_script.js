@@ -64,6 +64,27 @@ async function initialize() {
   );
 
   // create the quill editor
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    ["link", "image", "video", "formula"],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ];
+
   const quill = new Quill("#editor", {
     theme: "snow",
   });
@@ -90,6 +111,13 @@ async function initialize() {
       sortFunction(key1, key2),
     ),
   );
+
+  function toggleSelectedVideo(lastVideoTag, newVideoTag) {
+    if (lastVideoTag != null) lastVideoTag.classList.remove("selected");
+    newVideoTag.classList.add("selected");
+    return newVideoTag;
+  }
+
   // function to create the video button
   // we have to put it here inoreder to use global variable
   function createVideoButton(videoName, videoObject) {
@@ -100,7 +128,6 @@ async function initialize() {
     title.textContent = videoName;
     videoLink.appendChild(title);
 
-    console.log("hello ?");
     // add function when user click on the video tag
     videoLink.onclick = async function () {
       // TODO: highlight the loaded videos when user selected it !
@@ -119,6 +146,9 @@ async function initialize() {
 
       // mark the selected video for later saving view progress
       selectedVideo = videoObject;
+
+      // toggle the video selected
+      selectedVideoTag = toggleSelectedVideo(selectedVideoTag, videoLink);
     };
 
     return videoLink;
@@ -140,7 +170,7 @@ async function initialize() {
   }
 
   // we have to assign the event . I don't know why when remove this , the script break . So don't touch it !
-  const saveButton = document.getElementById("saveNote");
+  const saveButton = document.getElementById("saveNoteButton");
   saveButton.addEventListener("click", saveContent);
 
   // TODO: the save note button should be triggered when saving too ! and when the user click to return back , the autoSave should be called too !

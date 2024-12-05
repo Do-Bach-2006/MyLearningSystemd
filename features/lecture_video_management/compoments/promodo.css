@@ -1,3 +1,6 @@
+@import url("../../../compoments/fonts.css");
+@import url("../../../compoments/themes.css");
+
 #timerInput,
 #controls,
 #timerDisplay,
@@ -25,10 +28,12 @@
   border: 1px solid #ccc; /* Default border */
   border-radius: 5px; /* Rounded corners */
   outline: none; /* No outline on focus */
+  background-color: transparent;
+  color: var(--red);
 }
 
 .time-character:focus {
-  border-color: #007bff; /* Highlight border on focus */
+  border-color: var(--red); /* Highlight border on focus */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add glow on focus */
 }
 
@@ -36,32 +41,34 @@
   font-size: 24px; /* Make the character larger */
   border: none;
   background-color: none;
+  color: var(--red);
 }
 
 .control-button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 40px;
   color: black;
-  background-color: azure;
-  border: 2px solid black;
-  border-radius: 5px;
+
+  background-color: var(--red);
+
+  border: none;
   cursor: pointer;
   overflow: hidden; /* Prevent overflow from showing */
   transition: color 0.3s ease; /* Smooth color change */
+  font-family: "UbuntuSans";
 }
 
-/* TODO: install nerd font and use it here !*/
 .control-button::before {
-  content: "\f004"; /* Unicode for a heart icon (Font Awesome example) */
-  font-family: "Font Awesome 5 Free"; /* Ensure the icon font is loaded */
+  content: ""; /* Unicode for a heart icon (Font Awesome example) */
+  font-family: "UbuntuSans"; /* Ensure the icon font is loaded */
   position: absolute;
   top: 0;
   left: -100%; /* Start completely off-screen to the left */
   width: 100%; /* Full width of the button */
   height: 100%; /* Full height of the button */
-  background-color: lightblue; /* The background color to "sweep in" */
+  background-color: var(--red); /* The background color to "sweep in" */
   z-index: 0; /* Ensure it is below the text */
   transition: left 0.3s ease; /* Smooth transition effect */
   text-align: center;
@@ -85,8 +92,10 @@
 
 .big-display-character {
   font-size: 100px; /* Make the character larger */
-  border: none;
-  background-color: none;
+  border: transparent;
+  background-color: transparent;
+  font-family: "BigBlueTerm";
+  color: var(--red);
 }
 
 .overlay {
@@ -115,4 +124,15 @@
   opacity: 1;
   pointer-events: auto; /* Enable interaction when shown */
   transition: opacity 0.3s ease; /* Immediate visibility with fade */
+}
+
+#promodoClock {
+  background-color: var(--background);
+  color: white;
+}
+
+.clock-number {
+  font-family: "3270";
+  font-size: 20px;
+  color: var(--red);
 }

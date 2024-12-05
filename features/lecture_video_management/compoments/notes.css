@@ -1,0 +1,30 @@
+@import url("../../../compoments/fonts.css");
+@import url("../../../compoments/themes.css");
+
+#editor {
+  border: 1px solid var(--purple);
+}
+
+#editor * {
+  color: var(--foreground);
+}
+
+#saveNoteButton {
+  width: 3vh;
+  height: 3vh;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 300%;
+  color: var(--purple);
+  font-family: "3270";
+}
+
+#saveNoteButton:hover {
+  text-shadow:
+    0 0 5px var(--purple),
+    0 0 5px var(--purple),
+    0 0 5px var(--purple),
+    0 0 5px var(--purple),
+    0 0 5px var(--purple);
+}

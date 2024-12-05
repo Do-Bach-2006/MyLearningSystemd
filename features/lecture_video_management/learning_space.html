@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="learning_space_style.css" rel="stylesheet" />
     <link href="compoments/promodo.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.core.css"
+    />
     <!-- Include Quill stylesheet -->
     <link
       href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
@@ -14,6 +18,7 @@
     <link href="compoments/translateBox.css" rel="stylesheet" />
     <link href="compoments/chatAIBox.css" rel="stylesheet" />
     <link href="compoments/tools.css" rel="stylesheet" />
+    <link href="compoments/notes.css" rel="stylesheet" />
 
     <title>Video Layout</title>
   </head>
@@ -25,13 +30,13 @@
       </div>
 
       <!-- Collapse Button -->
-      <button id="collapseBtn" class="collapse-btn">Hide all</button>
+      <button id="collapseBtn" class="collapse-btn">󰞗</button>
       <button
         id="returnBtn"
         class="collapse-btn"
         onclick="window.location.href = './course_menu.html';"
       >
-        course menu
+        󰌑
       </button>
       <!-- Main Content Area -->
       <div class="main-content">
@@ -42,23 +47,22 @@
 
         <!-- HTML Content Part (30%) -->
         <div class="html-content">
-          <h2>TOOLS</h2>
-          <p>Collection of tools to assist me in learning</p>
+          <h1>CÔNG CỤ HỖ TRỢ</h1>
           <!-- ChatGPT Collapsible Section -->
-          <button class="collapsible">Note</button>
+          <button class="collapsible">Ghi chú</button>
           <div class="content">
             <div id="editor"></div>
-            <button id="saveNote">Save Note</button>
+            <button id="saveNoteButton">󰆓</button>
           </div>
 
           <!-- Thesaurus Collapsible Section -->
-          <button class="collapsible">Thesaurus</button>
+          <button class="collapsible">Từ điển thesaurus</button>
           <div class="content">
             <iframe src="https://www.thesaurus.com"></iframe>
           </div>
 
           <!-- Google transalate -->
-          <button class="collapsible">Translate</button>
+          <button class="collapsible">Dịch</button>
           <div class="content">
             <div id="translateBox">
               <div id="translateInputBox">
@@ -72,7 +76,7 @@
                 placeholder="Translated goes here..."
               ></textarea>
             </div>
-            <button onclick="translateText()">translate</button>
+            <button id="translateButton" onclick="translateText()">󰗊</button>
           </div>
 
           <button class="collapsible">AI chat</button>
@@ -86,23 +90,24 @@
                   id="chatAIuserInput"
                   placeholder="Type your message here..."
                 ></textarea>
-                <button id="sendButton">Send</button>
+                <button id="sendButton"></button>
               </div>
             </div>
           </div>
-          <button class="collapsible">TODO List</button>
+          <button class="collapsible">Danh sách việc cần làm</button>
+
           <div class="content">
             <div id="TODOBox">
-              <button onclick="createNewTODO()">add new</button>
+              <button onclick="createNewTODO()">󱍬</button>
             </div>
           </div>
 
-          <button class="collapsible">PROMODO Clock</button>
+          <button class="collapsible">Đồng hồ cà chua</button>
           <div class="content">
             <div id="promodoClock">
               <div id="indicator">
-                <h6 class="clock-number">Work minuites</h6>
-                <h6 class="clock-number">Rest minuites</h6>
+                <h6 class="clock-number">Work</h6>
+                <h6 class="clock-number">Rest</h6>
                 <h6 class="clock-number">Rounds</h6>
               </div>
               <div id="timerInput">
@@ -131,6 +136,9 @@
                 <h2 class="display-character" id="timerMinute">00</h2>
                 <h2 class="clock-number">:</h2>
                 <h2 class="display-character" id="timerSecond">00</h2>
+                <h2 class="display-character">
+                  (<span id="timerRound">0</span>)
+                </h2>
               </div>
               <div id="controls">
                 <button
@@ -138,21 +146,22 @@
                   type="button"
                   onclick=" startTimer()"
                 >
-                  start
+                  󱎫
                 </button>
                 <button
                   class="control-button"
                   type="button"
+                  id="pauseButton"
                   onclick="stopTimer()"
                 >
-                  pause
+                  󱫞
                 </button>
                 <button
                   class="control-button"
                   type="button"
                   onclick="nextState()"
                 >
-                  next
+                  󱫐
                 </button>
               </div>
             </div>
@@ -162,7 +171,7 @@
     </div>
     <!-- The overlay -->
     <div class="overlay" id="fullScreenOverlay">
-      <h1 class="big-display-character">TIME TO GRAB A COFFE !</h1>
+      <h1 class="big-display-character"> GO GRAB A COFFEE </h1>
       <div id="timerDisplay">
         <h2
           class="display-character big-display-character"
@@ -183,7 +192,7 @@
         type="button"
         onclick="nextState()"
       >
-        next
+        󱫐
       </button>
     </div>
 

@@ -4,9 +4,7 @@ const collapseBtn = document.getElementById("collapseBtn");
 // function for making the sidebar collapsible
 collapseBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
-  collapseBtn.textContent = sidebar.classList.contains("collapsed")
-    ? "Show all"
-    : "Hide all ";
+  collapseBtn.textContent = sidebar.classList.contains("collapsed") ? "󰞘" : "󰞗";
 });
 
 // function for making the tool tab collapsible

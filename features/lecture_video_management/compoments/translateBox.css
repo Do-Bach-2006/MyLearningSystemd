@@ -1,8 +1,11 @@
+@import url("../../../compoments/fonts.css");
+@import url("../../../compoments/themes.css");
+
 #translateBox {
   display: flex;
   width: 100%;
   height: 200px; /* Adjust height as needed */
-  border: 1px solid #ccc;
+  border: 1px solid var(--cyan);
   padding: 0;
   margin: 0;
 }
@@ -12,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--cyan);
 }
 
 #translateOutput {
@@ -20,7 +23,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #f9f9f9; /* Optional for visibility */
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 #translateInput {
@@ -31,8 +35,10 @@
   overflow-y: auto; /* Allow vertical scrolling if necessary */
   padding: 5px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
   outline: none;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 1.8vh;
 }
 
 #translateOutput {
@@ -43,6 +49,28 @@
   overflow-y: auto; /* Allow vertical scrolling if necessary */
   padding: 5px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
   outline: none;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 1.8vh;
+}
+
+#translateButton {
+  width: 3vh;
+  height: 3vh;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 300%;
+  color: var(--cyan);
+  font-family: "3270";
+}
+
+#translateButton:hover {
+  text-shadow:
+    0 0 5px var(--bright-cyan),
+    0 0 10px var(--bright-cyan),
+    0 0 15px var(--bright-cyan),
+    0 0 20px var(--bright-cyan),
+    0 0 25px var(--bright-cyan);
 }

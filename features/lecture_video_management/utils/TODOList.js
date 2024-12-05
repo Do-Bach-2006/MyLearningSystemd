@@ -17,11 +17,9 @@ function newTODODiv() {
   // Add event listener to handle checkbox state change
   markDoneInput.addEventListener("change", () => {
     if (markDoneInput.checked) {
-      textArea.style.textDecoration = "line-through"; // Cross the text
-      textArea.style.color = "gray"; // Optional: Dim the text
+      textArea.classList.add("completed"); // add the style for completed task
     } else {
-      textArea.style.textDecoration = "none"; // Remove cross
-      textArea.style.color = "black"; // Restore text color
+      textArea.classList.remove("completed"); // remove the completed style
     }
   });
 
