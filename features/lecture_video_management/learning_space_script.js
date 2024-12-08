@@ -159,14 +159,13 @@ async function initialize() {
     sidebar.appendChild(await createVideoButton(videoName, videoObject));
   }
 
+  // Assuming `quill` and `CURRENT_VIDEO_NAME` are already defined
+
   // function for save notes
   function saveContent() {
-    console.log("button clicked");
     const editorContent = quill.getContents();
 
     save_notes(CURRENT_VIDEO_NAME, editorContent);
-
-    console.log("hello ?");
   }
 
   // we have to assign the event . I don't know why when remove this , the script break . So don't touch it !

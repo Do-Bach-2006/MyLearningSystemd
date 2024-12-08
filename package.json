@@ -12,6 +12,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "delta-markdown-for-quill": "^0.0.9",
+    "fs-extra": "^11.2.0",
     "markdown-to-quill-delta": "^0.7.0",
     "md-editor-v3": "^5.0.0",
     "nord": "^0.2.1",

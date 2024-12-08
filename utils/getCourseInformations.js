@@ -106,6 +106,16 @@ async function initialize() {
     });
   }
 
+  function cleanUpCourseInfo(coursesInfo) {
+    const existCourseSet = new Set(fs.readdirSync(PATH_TO_COURSES_DATABASE));
+    const lastCourseSet = new Set(Object.keys(coursesInfo));
+
+    lastCourseSet.difference(existCourseSet).forEach((courseName) => {
+      console.log(courseName);
+      delete coursesInfo[courseName];
+    });
+  }
+
   console.log(PATH_TO_COURSES_DATABASE);
   // create database if not exist
   if (!fs.existsSync(PATH_TO_COURSES_DATABASE)) {
@@ -114,6 +124,7 @@ async function initialize() {
   }
 
   const coursesInfo = getCoursesInfo();
+  cleanUpCourseInfo(coursesInfo);
   syncCourses(coursesInfo);
   saveCourseInfo(coursesInfo);
 

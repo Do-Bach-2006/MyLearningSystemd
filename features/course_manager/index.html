@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two Div Layout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button
+      id="returnButton"
+      onclick="window.location.href = '../../index.html';"
+    >
+      󰌑
+    </button>
+    <div class="container">
+      <div class="main-div" id="coursesContainer"></div>
+      <div class="side-div" id="buttonContainer">
+        <button onclick="window.location.href = './pages/addCoursesMenu.html';">
+          󱑢
+        </button>
+        <button id="selectDirectoryButton"></button>
+        <button></button>
+      </div>
+    </div>
+    <script src="./scripts.js"></script>
+    <script src="utils/addCourseToDatabase.js"></script>
+  </body>
+</html>

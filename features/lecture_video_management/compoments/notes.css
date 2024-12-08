@@ -5,7 +5,7 @@
   border: 1px solid var(--purple);
 }
 
-#editor * {
+#editor {
   color: var(--foreground);
 }
 

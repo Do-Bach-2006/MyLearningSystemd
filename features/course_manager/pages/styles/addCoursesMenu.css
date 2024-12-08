@@ -1,0 +1,56 @@
+@import url("../../../../compoments/fonts.css");
+@import url("../../../../compoments/themes.css");
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--black);
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  font-size: 15vh;
+  cursor: pointer;
+  font-family: "3270";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  background-color: var(--black);
+  border: none;
+}
+
+button:hover {
+  background-color: var(--selection);
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#mainDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+}
+
+#buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  background-color: var(--black);
+}

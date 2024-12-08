@@ -1,5 +1,11 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, webContents } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  webContents,
+  dialog,
+} = require("electron");
 const path = require("node:path");
 
 function createWindow() {
@@ -8,6 +14,8 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
+      enableRemoteModule: true,
+      webviewTag: true, // Enable webview
       nodeIntegration: true, // Enable Node.js in the renderer process
       contextIsolation: false, // Disable context isolation
       preload: path.join(__dirname, "preload.js"),
@@ -47,4 +55,12 @@ app.whenReady().then(() => {
   ipcMain.handle("get-user-data-path", () => app.getPath("userData"));
   // set up the event listener for 'get-temp-dir'
   ipcMain.handle("get-temp-dir", () => app.getPath("temp"));
+  // set up the event listener for 'select-directory'
+  // this will allow user to select a directory
+  ipcMain.handle("select-directory", async () => {
+    const result = await dialog.showOpenDialog({
+      properties: ["openDirectory"],
+    });
+    return result.filePaths[0]; // Return the selected directory path
+  });
 });

@@ -44,6 +44,7 @@ async function save_notes(videoName, deltaContent) {
     console.error("Error saving notes:", error);
   }
 }
+
 async function get_notes(videoName) {
   const PATH_TO_VIDEO_NOTES = await getPathToVideoNote(videoName);
   try {
@@ -54,4 +55,5 @@ async function get_notes(videoName) {
     return null;
   }
 }
+
 module.exports = { save_notes, get_notes };

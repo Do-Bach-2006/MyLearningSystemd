@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Directory</title>
+    <link href="./styles/addCoursesMenu.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="mainDisplay">
+      <iframe id="displayIFrame" src="https://tutsnode.org/"></iframe>
+    </div>
+
+    <div id="buttons">
+      <button
+        id="returnButton"
+        onclick="window.location.href = '../index.html';"
+      >
+        󰌑
+      </button>
+      <button id="tutsnodeButton" onclick="changeIframeToTutsNode()">󰖟</button>
+      <button id="torrentButton"></button>
+    </div>
+    <script src="../utils/fetchTutsNode.js"></script>
+  </body>
+</html>
