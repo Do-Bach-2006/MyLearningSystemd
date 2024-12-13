@@ -5,14 +5,15 @@ const {
   ipcMain,
   webContents,
   dialog,
+  BrowserView,
 } = require("electron");
 const path = require("node:path");
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 700,
     webPreferences: {
       enableRemoteModule: true,
       webviewTag: true, // Enable webview

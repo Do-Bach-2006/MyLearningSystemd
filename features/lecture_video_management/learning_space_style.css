@@ -15,6 +15,10 @@ html {
   overflow: hidden;
 }
 
+.html-content {
+  overflow-y: scroll;
+}
+
 .container {
   display: flex;
   height: 100vh;
@@ -121,10 +125,11 @@ video {
   height: 100%;
 }
 
-iframe {
+webview {
   width: 100%;
   height: 700px; /* Adjust height as needed */
   border: none;
+  overflow: scroll;
 }
 
 .selected {

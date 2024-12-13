@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.core.css"
     />
+    <link rel="stylesheet" href="compoments/browser.css" />
     <!-- Include Quill stylesheet -->
     <link
       href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
@@ -19,6 +20,7 @@
     <link href="compoments/chatAIBox.css" rel="stylesheet" />
     <link href="compoments/tools.css" rel="stylesheet" />
     <link href="compoments/notes.css" rel="stylesheet" />
+    <link href="compoments/browser.css" />
 
     <title>Video Layout</title>
   </head>
@@ -48,17 +50,38 @@
         <!-- HTML Content Part (30%) -->
         <div class="html-content">
           <h1>CÔNG CỤ HỖ TRỢ</h1>
-          <!-- ChatGPT Collapsible Section -->
+
+          <!-- Note Collapsible Section -->
           <button class="collapsible">Ghi chú</button>
           <div class="content">
             <div id="editor"></div>
             <button id="saveNoteButton">󰆓</button>
           </div>
 
-          <!-- Thesaurus Collapsible Section -->
-          <button class="collapsible">Từ điển thesaurus</button>
+          <!-- TODO list-->
+          <button class="collapsible">Danh sách việc cần làm</button>
+
           <div class="content">
-            <iframe src="https://www.thesaurus.com"></iframe>
+            <div id="TODOBox">
+              <button onclick="createNewTODO()">󱍬</button>
+            </div>
+          </div>
+
+          <!-- AI chat -->
+          <button class="collapsible">AI chat</button>
+          <div class="content">
+            <div class="chat-box">
+              <!-- Message display area -->
+              <div class="message-area" id="messageArea"></div>
+              <!-- Input area -->
+              <div class="input-area">
+                <textarea
+                  id="chatAIuserInput"
+                  placeholder="Type your message here..."
+                ></textarea>
+                <button id="sendButton"></button>
+              </div>
+            </div>
           </div>
 
           <!-- Google transalate -->
@@ -79,29 +102,7 @@
             <button id="translateButton" onclick="translateText()">󰗊</button>
           </div>
 
-          <button class="collapsible">AI chat</button>
-          <div class="content">
-            <div class="chat-box">
-              <!-- Message display area -->
-              <div class="message-area" id="messageArea"></div>
-              <!-- Input area -->
-              <div class="input-area">
-                <textarea
-                  id="chatAIuserInput"
-                  placeholder="Type your message here..."
-                ></textarea>
-                <button id="sendButton"></button>
-              </div>
-            </div>
-          </div>
-          <button class="collapsible">Danh sách việc cần làm</button>
-
-          <div class="content">
-            <div id="TODOBox">
-              <button onclick="createNewTODO()">󱍬</button>
-            </div>
-          </div>
-
+          <!-- promodo clock -->
           <button class="collapsible">Đồng hồ cà chua</button>
           <div class="content">
             <div id="promodoClock">
@@ -166,6 +167,26 @@
               </div>
             </div>
           </div>
+
+          <!-- Thesaurus Collapsible Section -->
+          <button class="collapsible">Từ điển thesaurus</button>
+          <div class="content">
+            <webview src="https://www.thesaurus.com"></webview>
+          </div>
+
+          <!-- TODO: add function to this shit!-->
+          <!-- google search -->
+          <button class="collapsible">Công cụ tìm kiếm</button>
+          <div class="content">
+            <div id="searchEngineControls">
+              <button id="leftPageButton"></button>
+              <button id="rightPageButton"></button>
+              <button id="reloadPageButton">󰑓</button>
+              <button id="searchPageButton"></button>
+              <input id="searchPageInput" />
+            </div>
+            <webview id="searchWebView" src="https://duckduckgo.com/"></webview>
+          </div>
         </div>
       </div>
     </div>
@@ -203,13 +224,14 @@
     ></script>
     <script src="utils/collapsibleFunctions.js"></script>
     <script src="./utils/chatAI.js"></script>
-    <!--     FIXME: I have to fix this in the future , but not now ! 
+    <!--     FIXME: I have to fix this in the future , but not now !
               I dont' know why I have to use type="module" here . The problem must be the way html read the script . -->
     <script src="learning_space_script.js" type="module" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
     <script src="./utils/translator.js"></script>
     <script src="utils/TODOList.js"></script>
     <script src="utils/promodoClock.js"></script>
+    <script src="utils/browser.js"></script>
     <!-- Initialize Quill editor -->
   </body>
 </html>

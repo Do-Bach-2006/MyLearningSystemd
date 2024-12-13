@@ -13,15 +13,11 @@
     "@google/generative-ai": "^0.21.0",
     "delta-markdown-for-quill": "^0.0.9",
     "fs-extra": "^11.2.0",
-    "markdown-to-quill-delta": "^0.7.0",
-    "md-editor-v3": "^5.0.0",
-    "nord": "^0.2.1",
     "quill": "^2.0.2",
     "quill-delta-to-markdown": "^0.6.0",
     "standsit-timer": "^3.1.0",
     "timer-for-pomodoro": "^1.0.2",
-    "translate-google": "^1.5.0",
-    "vue": "^3.5.12"
+    "translate-google": "^1.5.0"
   },
   "devDependencies": {
     "electron": "31.2.1"

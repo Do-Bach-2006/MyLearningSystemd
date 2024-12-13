@@ -125,7 +125,7 @@ h1 {
   padding: 0;
   border: 0;
   font-family: "3270";
-  color: var(--red);
+  color: #50fa7b;
   cursor: pointer;
 }
 
@@ -144,7 +144,7 @@ h1 {
   align-items: center;
   font-size: 7vh; /* Explicitly set a large font size */
   font-family: "3270"; /* Ensure this font supports your icon */
-  color: var(--red);
+  color: var(--white);
 }
 
 .hidden-element {

@@ -1,2 +1,57 @@
+@import url("../../compoments/fonts.css");
+@import url("../../compoments/themes.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "3270";
+}
+
+html {
+  background-image: url("../../assests/img/cat.png");
+  color: var(--foreground);
+  justify-content: center;
+  align-items: center;
+}
+
 #geiminiInputSection {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 50%;
+  height: 5vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+button {
+  width: auto;
+  height: 5vh;
+  background-color: transparent;
+  color: var(--foreground);
+  border: transparent;
+  font-size: 5vh;
+}
+
+button:hover {
+  color: var(--purple);
+}
+
+select {
+  width: 50%;
+  height: 5vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+h2 {
+  font-size: 10vh;
+  text-align: center;
 }

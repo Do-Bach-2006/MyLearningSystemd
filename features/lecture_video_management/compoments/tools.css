@@ -20,26 +20,27 @@
 }
 
 .collapsible:nth-of-type(2) {
-  background-color: var(--green);
-}
-
-.collapsible:nth-of-type(3) {
-  background-color: var(--cyan);
-}
-
-.collapsible:nth-of-type(4) {
-  background-color: var(--yellow);
-}
-
-.collapsible:nth-of-type(5) {
   background-color: var(--orange);
 }
 
-.collapsible:nth-of-type(6) {
+.collapsible:nth-of-type(3) {
+  background-color: var(--yellow);
+}
+
+.collapsible:nth-of-type(4) {
+  background-color: var(--cyan);
+}
+
+.collapsible:nth-of-type(5) {
   background-color: var(--red);
 }
 
+.collapsible:nth-of-type(6) {
+  background-color: var(--green);
+}
+
 .content {
+  position: relative;
   display: none;
   overflow: hidden;
   padding: 5px;

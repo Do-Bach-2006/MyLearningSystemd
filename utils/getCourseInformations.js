@@ -52,13 +52,21 @@ async function initialize() {
   }
 
   function syncCourses(coursesInfo) {
-    function recurGetVideos(pathToCourse, childDirectories, courseInfo) {
+    function recurGetVideos(
+      pathToCourse,
+      childDirectories,
+      courseInfo,
+      courseName,
+    ) {
       const VIDEO_EXTENSIONS = [".mkv", ".mp4"];
 
-      const generateVideoName = (childDirectories, videoName) => {
+      const generateVideoName = (courseName, childDirectories, videoName) => {
         // we add middleName based on ancestor directories to distinguish between the video names
         const middleName = childDirectories.join("_");
-        return middleName !== "" ? middleName + "_" + videoName : videoName;
+
+        return middleName !== ""
+          ? courseName + "_" + middleName + "_" + videoName
+          : courseName + "_" + videoName;
       };
 
       fs.readdirSync(pathToCourse).forEach((file) => {
@@ -68,11 +76,20 @@ async function initialize() {
           // we recur here, the PATH_TO_FILE is already added up to that specific file
           // childDirectories is used for a distinct video name!
           childDirectories.push(file);
-          recurGetVideos(PATH_TO_FILE, childDirectories, courseInfo);
+          recurGetVideos(
+            PATH_TO_FILE,
+            childDirectories,
+            courseInfo,
+            courseName,
+          );
           childDirectories.pop();
         } else if (VIDEO_EXTENSIONS.includes(path.extname(PATH_TO_FILE))) {
           // if this is a video, we compare with the information we have in the courseInfo
-          const videoName = generateVideoName(childDirectories, file);
+          const videoName = generateVideoName(
+            courseName,
+            childDirectories,
+            file,
+          );
 
           // if this is a new video, we add it
           if (courseInfo.videos[videoName] === undefined) {
@@ -101,7 +118,7 @@ async function initialize() {
 
       // for each course, we loop through its children to gather all the videos
       if (isDirectory(COURSE_PATH)) {
-        recurGetVideos(COURSE_PATH, [], courseInfo);
+        recurGetVideos(COURSE_PATH, [], courseInfo, courseName);
       }
     });
   }
