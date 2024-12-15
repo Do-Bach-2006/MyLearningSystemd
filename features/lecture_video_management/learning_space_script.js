@@ -135,9 +135,6 @@ async function initialize() {
 
     // add function when user click on the video tag
     videoLink.onclick = async function () {
-      // TODO: highlight the loaded videos when user selected it !
-      //videoLink.classList.add("selected");
-
       // load the video
       const videoPlayer = document.getElementById("mainVideo");
       videoPlayer.src = videoObject.path;
@@ -220,6 +217,8 @@ async function initialize() {
       selectedVideo.progress,
     );
 
+    console.log(selectedVideo.progress);
+
     fs.writeFileSync(
       PATH_TO_COURSES_INFO_JSON,
       JSON.stringify(coursesInfo, null, 4),
@@ -229,42 +228,67 @@ async function initialize() {
   // auto save time every 4 seconds
   setInterval(autoSaveTimer, 4000);
 
-  function playNearestIncompleteVideo() {
-    //window.location.href = "./learning_space.html"; // reload the page
-    // we can use the index here since the videoBUttons is created after we
+  function playNextVideo() {
+    /*
+     *  this function will find the next video to play inorder:
+     *      incomplete video ( 1 )
+     *      next video in the list (2)
+     *      first video in the list (3)
+     * */
+
     // have sort the order of the videoObject so the corresspoding button will
     // have the same index as the videoObject
     let index = 0;
+    let lastVideoName = "";
+    let nextVideoTag = undefined;
+
     for (const [videoName, videoObject] of Object.entries(
       courseObject.videos,
     )) {
+      // this code is checking if the current video is the last video , if it is , we memory
+      // it and play it in case there is no nearest incomplete video found
+      //console.log(CURRENT_VIDEO_NAME, " ", lastVideoName);
+
+      if (CURRENT_VIDEO_NAME == lastVideoName) {
+        nextVideoTag = videoButtons[index];
+      }
+      lastVideoName = videoName;
+
       // load the video ;
       if (videoObject.progress < 90) {
+        console.log(videoName + " " + videoObject.progress);
         videoButtons[index].click(); // trigger the next video button
-        break;
+
+        return;
       }
+
       index += 1;
     }
+
+    // if we can't find the nearest incomplete video , we should process to the next video in the order
+    if (nextVideoTag) {
+      nextVideoTag.click();
+
+      return;
+    }
+
+    // if there is no next video , we should process to the first video
+    videoButtons[0].click();
   }
 
   function addEventListenerToVideoPlayerWhenFinishVideo() {
     const videoPlayer = document.getElementById("mainVideo");
-
-    const refreshThenPlay = () => {
+    const refeshAndPlayNext = () => {
       window.location.reload();
-      setTimeout(playNearestIncompleteVideo, 5000);
+      setTimeout(playNextVideo, 1000);
     };
-    // when we finish the video we wait for 5 seconds to save all the progress. Then process to next video .
-    videoPlayer.addEventListener("ended", refreshThenPlay);
+    videoPlayer.addEventListener("ended", refeshAndPlayNext);
   }
 
-  //TODO: when there is no incomplete video , we should process to the next video in the order
-
   // we load the nearest incomplete video when first load the page
-  playNearestIncompleteVideo();
+  playNextVideo();
 
   addEventListenerToVideoPlayerWhenFinishVideo();
 }
 
 initialize();
-console.log("ligamball");

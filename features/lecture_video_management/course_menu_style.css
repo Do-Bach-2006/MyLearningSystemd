@@ -14,6 +14,19 @@ head {
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar-track {
+  background-color: var(--black); /* Scrollbar track color */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--gray); /* Scrollbar thumb color */
+  border-radius: 6px; /* Rounded edges for the thumb */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--selection); /* Thumb color on hover */
+}
+
 h1 {
   justify-content: center;
   align-items: center;
@@ -24,6 +37,7 @@ h1 {
   height: 10%;
   padding: 0;
   margin: 0;
+  font-size: 7vh;
 }
 
 h4 {
@@ -39,7 +53,7 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background); /* Optional: background color */
+  background-image: url("./assests/img/dracula-galaxy-bd93f9.png"); /* Optional: background color */
   color: var(--foreground); /* Optional: text color */
   width: 100%;
   height: 90%;
@@ -98,7 +112,7 @@ h4 {
   padding: 10px;
   background-color: transparent; /* Transparent background */
   color: white; /* Button text color */
-  border: 1px solid white; /* Optional: gives it a visible border */
+  border: transparent; /* Optional: gives it a visible border */
   border-radius: 5px;
   cursor: pointer;
 }

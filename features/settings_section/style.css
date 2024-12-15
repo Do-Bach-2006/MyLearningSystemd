@@ -9,7 +9,8 @@
 }
 
 html {
-  background-image: url("../../assests/img/cat.png");
+  background-image: url("./assests/img/dracula-cat-6272a4.png");
+  background-size: stretch;
   color: var(--foreground);
   justify-content: center;
   align-items: center;

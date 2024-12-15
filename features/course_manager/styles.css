@@ -31,6 +31,11 @@ body {
   overflow: none;
 }
 
+html {
+  background-image: url("./assests/img/dracula-galaxy-6272a4.png");
+  background-size: stretch;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -44,14 +49,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    var(--black),
-    var(--bright-black),
-    var(--gray),
-    var(--bright-gray)
-  );
   overflow-y: scroll;
+  background: transparent;
 }
 
 .side-div {
@@ -60,13 +59,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    var(--black),
-    var(--bright-black),
-    var(--gray),
-    var(--bright-gray)
-  );
+  background: transparent;
 }
 
 button {
