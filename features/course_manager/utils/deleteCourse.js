@@ -20,6 +20,7 @@ function confirmDelete(coursePath) {
     }
 
     deleteCourse(coursePath);
+    window.location.reload(); // reload the page for better UI
     return "delete completed";
   } catch (error) {
     return "something went wrong. Code: " + error.toString();

@@ -113,11 +113,14 @@ html {
 .video-tag {
   margin: 10px;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: transparent;
+  background-color: transparent;
   cursor: pointer;
-  background-color: var(--background);
   color: var(--foreground);
-  border-radius: 10px;
+}
+
+.video-tag:hover {
+  background-color: var(--selection);
 }
 
 video {
@@ -125,15 +128,21 @@ video {
   height: 100%;
 }
 
-webview {
+webview,
+iframe {
   width: 100%;
   height: 700px; /* Adjust height as needed */
   border: none;
   overflow: scroll;
 }
 
-.selected {
-  background-color: var(--pink);
+.selected-course {
+  /* we should hight light the border with this !*/
+  border: 4px solid var(--purple);
+}
+
+.completed-course {
+  background-color: var(--green);
   color: var(--black);
 }
 

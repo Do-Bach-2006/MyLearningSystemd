@@ -34,6 +34,7 @@ async function saveCourse(PATH_TO_NEW_COURSE) {
     // Attempt to move the course
     await fs.move(PATH_TO_NEW_COURSE, destinationPath, { overwrite: false });
     console.log("Course added");
+    window.location.reload(); // reload the page for better UI
     return "Course added";
   } catch (error) {
     console.error("Course cannot be added:", error.message);

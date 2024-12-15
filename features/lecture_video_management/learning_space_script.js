@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const { save_notes, get_notes } = require("./utils/notes.js");
 const { ipcRenderer } = require("electron");
+const { setInterval } = require("timers");
 
 function sortFunction(stringA, stringB) {
   /* this is a sort function to sort videos by number in it's description
@@ -113,17 +114,21 @@ async function initialize() {
   );
 
   function toggleSelectedVideo(lastVideoTag, newVideoTag) {
-    if (lastVideoTag != null) lastVideoTag.classList.remove("selected");
-    newVideoTag.classList.add("selected");
+    if (lastVideoTag != null) lastVideoTag.classList.remove("selected-course");
+    newVideoTag.classList.add("selected-course");
     return newVideoTag;
   }
 
+  const videoButtons = [];
   // function to create the video button
   // we have to put it here inoreder to use global variable
   function createVideoButton(videoName, videoObject) {
     // create video tag
     const videoLink = document.createElement("div");
     videoLink.classList.add("video-tag");
+    // the video is considered completed when user watch 90% of the video
+    if (videoObject.progress >= 90) videoLink.classList.add("completed-course");
+
     const title = document.createElement("h5");
     title.textContent = videoName;
     videoLink.appendChild(title);
@@ -156,10 +161,10 @@ async function initialize() {
 
   for (const [videoName, videoObject] of Object.entries(courseObject.videos)) {
     const sidebar = document.getElementById("sidebar");
-    sidebar.appendChild(await createVideoButton(videoName, videoObject));
+    const videoButton = await createVideoButton(videoName, videoObject);
+    sidebar.appendChild(videoButton);
+    videoButtons.push(videoButton);
   }
-
-  // Assuming `quill` and `CURRENT_VIDEO_NAME` are already defined
 
   // function for save notes
   function saveContent() {
@@ -181,6 +186,20 @@ async function initialize() {
     return currentTime;
   }
 
+  function extractTotalTimer() {
+    const videoPlayer = document.getElementById("mainVideo");
+    const totalTime = videoPlayer.duration;
+
+    return totalTime == NaN ? 0 : totalTime;
+  }
+
+  function getProgress(videoDuration, currentPlayTime) {
+    /* return false if user has not beeen watch about 90% of the video, return true otherwise
+     * */
+
+    return (currentPlayTime / videoDuration) * 100;
+  }
+
   function autoSaveTimer() {
     if (selectedVideo === null) {
       console.log("no video saved");
@@ -190,7 +209,16 @@ async function initialize() {
 
     console.log(selectedVideo);
 
-    selectedVideo.lastViewTime = extractTimer();
+    const currentPlayTime = extractTimer();
+    const videoDuration = extractTotalTimer();
+
+    selectedVideo.lastViewTime = currentPlayTime;
+
+    // we alway keep track of the highest progress!
+    selectedVideo.progress = Math.max(
+      getProgress(videoDuration, currentPlayTime),
+      selectedVideo.progress,
+    );
 
     fs.writeFileSync(
       PATH_TO_COURSES_INFO_JSON,
@@ -198,11 +226,45 @@ async function initialize() {
     );
   }
 
-  // auto save time every 10 seconds
-  setInterval(autoSaveTimer, 10000);
+  // auto save time every 4 seconds
+  setInterval(autoSaveTimer, 4000);
+
+  function playNearestIncompleteVideo() {
+    //window.location.href = "./learning_space.html"; // reload the page
+    // we can use the index here since the videoBUttons is created after we
+    // have sort the order of the videoObject so the corresspoding button will
+    // have the same index as the videoObject
+    let index = 0;
+    for (const [videoName, videoObject] of Object.entries(
+      courseObject.videos,
+    )) {
+      // load the video ;
+      if (videoObject.progress < 90) {
+        videoButtons[index].click(); // trigger the next video button
+        break;
+      }
+      index += 1;
+    }
+  }
+
+  function addEventListenerToVideoPlayerWhenFinishVideo() {
+    const videoPlayer = document.getElementById("mainVideo");
+
+    const refreshThenPlay = () => {
+      window.location.reload();
+      setTimeout(playNearestIncompleteVideo, 5000);
+    };
+    // when we finish the video we wait for 5 seconds to save all the progress. Then process to next video .
+    videoPlayer.addEventListener("ended", refreshThenPlay);
+  }
+
+  //TODO: when there is no incomplete video , we should process to the next video in the order
+
+  // we load the nearest incomplete video when first load the page
+  playNearestIncompleteVideo();
+
+  addEventListenerToVideoPlayerWhenFinishVideo();
 }
-// TODO : save the current selected div button for styling purpose
-// create buttons to switch between courses
 
 initialize();
 console.log("ligamball");
