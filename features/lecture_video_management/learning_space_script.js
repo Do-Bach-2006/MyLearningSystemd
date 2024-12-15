@@ -258,8 +258,7 @@ async function initialize() {
       if (videoObject.progress < 90) {
         console.log(videoName + " " + videoObject.progress);
         videoButtons[index].click(); // trigger the next video button
-
-        return;
+        return "play nearest";
       }
 
       index += 1;
@@ -269,18 +268,27 @@ async function initialize() {
     if (nextVideoTag) {
       nextVideoTag.click();
 
-      return;
+      return "play next";
     }
 
     // if there is no next video , we should process to the first video
     videoButtons[0].click();
+    return "play first";
   }
 
   function addEventListenerToVideoPlayerWhenFinishVideo() {
     const videoPlayer = document.getElementById("mainVideo");
-    const refeshAndPlayNext = () => {
-      window.location.reload();
-      setTimeout(playNextVideo, 1000);
+    const refeshAndPlayNext = async () => {
+      const returnPhrase = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(playNextVideo());
+        }, 1000);
+      });
+
+      console.log(returnPhrase);
+      if (returnPhrase == "play nearest") {
+        window.location.reload(); // we reload as the UI updated
+      }
     };
     videoPlayer.addEventListener("ended", refeshAndPlayNext);
   }
