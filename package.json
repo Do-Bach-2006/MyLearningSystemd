@@ -7,7 +7,8 @@
   "version": "1.0.0",
   "author": "gnomeright",
   "scripts": {
-    "start": "electron32 ."
+    "start": "electron32 .",
+    "build": "electron-builder"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
@@ -22,5 +23,41 @@
   "devDependencies": {
     "electron": "31.2.1",
     "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.yourname.yourapp",
+    "productName": "MyLearningSystemd",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!*.log",
+      "!*.tmp",
+      "!*.vscode/",
+      "!*.gitignore",
+      "!*.git/"
+    ],
+    "asar": {
+      "smartUnpack": true
+    },
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    }
   }
 }
