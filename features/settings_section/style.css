@@ -16,15 +16,6 @@ html {
   align-items: center;
 }
 
-#geiminiInputSection {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
 input {
   width: 50%;
   height: 5vh;
@@ -57,11 +48,47 @@ select {
 h2 {
   font-size: 10vh;
   text-align: center;
-  color: var(--green);
+  color: var(--pink);
   /* text-shadow: */
   /*   0 0 5px var(--cyan), */
   /*   0 0 10px var(--cyan), */
   /*   0 0 15px var(--cyan), */
   /*   0 0 20px var(--cyan), */
   /*   0 0 25px var(--cyan); */
+}
+
+.blur-box {
+  position: relative;
+  border: transparent;
+}
+
+.blur-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  backdrop-filter: blur(8px);
+  z-index: -1;
+  border: transparent;
+}
+
+label {
+  font-size: 5vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  position: relative;
+  border: 3px solid var(--foreground);
+  border-radius: 10px;
+  padding: 2vh;
+  margin: 2vh;
+  color: var(--foreground);
+  font-size: 3vh;
 }
