@@ -94,3 +94,27 @@
   margin: 0 auto;
   border: transparent;
 }
+
+.html-content-container {
+  display: flex;
+  flex-direction: row-reverse; /* Reverse the direction to align the content on the right */
+  position: relative;
+  height: 100%;
+}
+
+.html-content {
+  width: 30%; /* Default width */
+  min-width: 300px; /* Minimum width */
+  max-width: 50%; /* Maximum width */
+  overflow-y: auto; /* Scroll if content overflows vertically */
+  background: var(--background); /* Example background */
+  box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for right-side div */
+}
+
+.resize-handle {
+  width: 5px;
+  cursor: ew-resize;
+  background: var(--selection); /* Example color for the handle */
+  position: relative;
+  z-index: 10;
+}
