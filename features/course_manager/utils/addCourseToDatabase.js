@@ -17,7 +17,7 @@ function initSelectDirectoryButton() {
       return 0;
     }
 
-    // AFTER WE SELECT A PATH , WE WILL HAVE TO NAME IT !
+    // AFTER WE SELECT A PATH , WE WILL HAVE TO CHECK IF THE COURSE NAME IS ALREADY EXIST
     alert(await saveCourse(selectedPath));
 
     // reload as we add new course

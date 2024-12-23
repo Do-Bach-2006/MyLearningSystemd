@@ -24,6 +24,7 @@ async function saveCourse(PATH_TO_NEW_COURSE) {
     COURSES_INFO_JSON[courseName] = {
       path: PATH_TO_NEW_COURSE,
       videos: {},
+      completedVideoCount: 0,
     };
   } else {
     return `the course name ${courseName} is already exist.`;

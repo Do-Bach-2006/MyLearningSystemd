@@ -229,6 +229,8 @@ async function initialize() {
       selectedVideo.progress,
     );
 
+    // TODO: if the progress is more than 90%, then we refresh the page, increase the completed video count.
+
     console.log(selectedVideo.progress);
 
     fs.writeFileSync(
