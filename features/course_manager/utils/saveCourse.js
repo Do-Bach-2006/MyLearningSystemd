@@ -27,7 +27,7 @@ async function saveCourse(PATH_TO_NEW_COURSE) {
       completedVideoCount: 0,
     };
   } else {
-    return `the course name ${courseName} is already exist.`;
+    return `Khóa học trùng tên với một khóa học đã được thêm vào :  ${courseName} `;
   }
 
   // save information
@@ -36,7 +36,7 @@ async function saveCourse(PATH_TO_NEW_COURSE) {
     JSON.stringify(COURSES_INFO_JSON),
   );
 
-  return "Course saved successfully.";
+  return "thêm khóa học thành công";
 }
 
 module.exports = { saveCourse };

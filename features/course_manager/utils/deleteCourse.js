@@ -23,17 +23,11 @@ async function deleteCourse(courseName) {
 
 function confirmDelete(courseName) {
   try {
-    if (
-      !confirm(`are you sure you want to remove the course name ${courseName}?`)
-    ) {
-      return "aborted";
-    }
-
     deleteCourse(courseName);
     window.location.reload(); // reload the page for better UI
-    return "delete completed";
+    return "Đã loại bỏ khóa học thành công ";
   } catch (error) {
-    return "something went wrong. Code: " + error.toString();
+    return "Có lỗi đã xảy ra . Code: " + error.toString();
   }
 }
 
