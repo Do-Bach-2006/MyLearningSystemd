@@ -37,4 +37,4 @@ function confirmDelete(courseName) {
   }
 }
 
-module.exports = { confirmDelete };
+module.exports = { confirmDelete, deleteCourse };

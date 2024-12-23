@@ -145,6 +145,41 @@ h1 {
   pointer-events: none;
 }
 
+.erase-button {
+  font-size: 100%;
+  width: 10%;
+  height: 20%;
+  position: absolute;
+  right: 100;
+  top: -30;
+  background-color: transparent;
+  border: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "3270";
+  color: #50fa7b;
+  cursor: pointer;
+}
+
+.erase-button span:hover {
+  color: var(--selection);
+}
+
+.erase-button span {
+  position: absolute;
+  right: 100;
+  top: -30;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7vh; /* Explicitly set a large font size */
+  font-family: "3270"; /* Ensure this font supports your icon */
+  color: var(--white);
+}
+
 #returnButton {
   font-size: 5vh;
   position: absolute;
