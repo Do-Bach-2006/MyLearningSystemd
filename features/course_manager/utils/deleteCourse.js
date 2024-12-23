@@ -1,25 +1,35 @@
-async function deleteCourse(coursePath) {
+async function deleteCourse(courseName) {
+  const { ipcRenderer } = require("electron");
+  const path = require("path");
   const fs = require("fs");
 
-  if (!fs.existsSync(coursePath)) {
-    return "Course does not exist";
-  } else {
-    fs.rmSync(coursePath, { recursive: true, force: true });
-    return "Course deleted";
+  const PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
+  const PATH_TO_COURSES_INFO_JSON = path.join(
+    PATH_TO_USER_DATABASE,
+    "courses_info.json",
+  );
+
+  if (!fs.existsSync(PATH_TO_COURSES_INFO_JSON)) {
+    //empty object at inintialization
+    fs.writeFileSync(PATH_TO_COURSES_INFO_JSON, "{}");
   }
+
+  const coursesInfo = JSON.parse(fs.readFileSync(PATH_TO_COURSES_INFO_JSON));
+  delete coursesInfo[courseName];
+
+  // save to courses_info.json
+  fs.writeFileSync(PATH_TO_COURSES_INFO_JSON, JSON.stringify(coursesInfo));
 }
 
-function confirmDelete(coursePath) {
+function confirmDelete(courseName) {
   try {
     if (
-      !confirm(
-        `are you sure you want to delete ${coursePath}? The course directory will be deleted permanently.`,
-      )
+      !confirm(`are you sure you want to remove the course name ${courseName}?`)
     ) {
       return "aborted";
     }
 
-    deleteCourse(coursePath);
+    deleteCourse(courseName);
     window.location.reload(); // reload the page for better UI
     return "delete completed";
   } catch (error) {

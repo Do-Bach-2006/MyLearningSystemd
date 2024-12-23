@@ -17,7 +17,11 @@ function initSelectDirectoryButton() {
       return 0;
     }
 
+    // AFTER WE SELECT A PATH , WE WILL HAVE TO NAME IT !
     alert(await saveCourse(selectedPath));
+
+    // reload as we add new course
+    window.location.reload();
   });
 }
 

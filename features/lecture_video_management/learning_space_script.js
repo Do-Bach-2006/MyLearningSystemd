@@ -47,6 +47,18 @@ function sortFunction(stringA, stringB) {
 
   return numbersA.length - numbersB.length;
 }
+function beautifulName(videoName) {
+  const videoNameArray = videoName.split("<sep>");
+
+  let finalName = "";
+
+  // we can skip the first element ( the course name ) because all the video is in the same course
+  for (let i = 1; i < videoNameArray.length; i++) {
+    finalName += videoNameArray[i] + " ";
+  }
+
+  return finalName;
+}
 let CURRENT_VIDEO_NAME = "?";
 let selectedVideo = null;
 let selectedVideoTag = null;
@@ -130,7 +142,7 @@ async function initialize() {
     if (videoObject.progress >= 90) videoLink.classList.add("completed-course");
 
     const title = document.createElement("h5");
-    title.textContent = videoName;
+    title.textContent = beautifulName(videoName);
     videoLink.appendChild(title);
 
     // add function when user click on the video tag

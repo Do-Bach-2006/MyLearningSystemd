@@ -17,7 +17,7 @@ function createNewCourseDiv(courseName, pathToCourse) {
 
   const { confirmDelete } = require("./utils/deleteCourse.js");
   deleteButton.addEventListener("click", async () => {
-    alert(await confirmDelete(pathToCourse));
+    alert(await confirmDelete(courseName));
   });
 
   newDiv.appendChild(deleteButton);

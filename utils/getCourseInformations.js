@@ -38,6 +38,7 @@ async function initialize() {
       // read the data if file exists
       coursesInfo = JSON.parse(fs.readFileSync(PATH_TO_COURSES_INFO_JSON));
     }
+    console.log(coursesInfo);
 
     return coursesInfo;
   }
@@ -65,8 +66,8 @@ async function initialize() {
         const middleName = childDirectories.join("_");
 
         return middleName !== ""
-          ? courseName + "_" + middleName + "_" + videoName
-          : courseName + "_" + videoName;
+          ? courseName + "<sep>" + middleName + "<sep>" + videoName
+          : courseName + "<sep>" + videoName;
       };
 
       fs.readdirSync(pathToCourse).forEach((file) => {
@@ -103,33 +104,46 @@ async function initialize() {
       });
     }
 
-    fs.readdirSync(PATH_TO_COURSES_DATABASE).forEach((courseName) => {
-      const COURSE_PATH = path.join(PATH_TO_COURSES_DATABASE, courseName);
+    Object.getOwnPropertyNames(coursesInfo).forEach((courseName) => {
+      // TODO: travel to the path here !
+      console.log(courseName);
 
-      let courseInfo = coursesInfo[courseName];
-
-      if (courseInfo === undefined) {
-        courseInfo = {
-          path: COURSE_PATH,
-          videos: {},
-        };
-        coursesInfo[courseName] = courseInfo;
-      }
-
-      // for each course, we loop through its children to gather all the videos
-      if (isDirectory(COURSE_PATH)) {
-        recurGetVideos(COURSE_PATH, [], courseInfo, courseName);
-      }
+      courseObject = coursesInfo[courseName];
+      // the coursePath is already set so we don't have to worry about it.
+      recurGetVideos(courseObject.path, [], courseObject, courseName);
     });
+
+    // fs.readdirSync(PATH_TO_COURSES_DATABASE).forEach((courseName) => {
+    //   const COURSE_PATH = path.join(PATH_TO_COURSES_DATABASE, courseName);
+    //
+    //   let courseInfo = coursesInfo[courseName];
+    //
+    //   if (courseInfo === undefined) {
+    //     courseInfo = {
+    //       path: COURSE_PATH,
+    //       videos: {},
+    //     };
+    //     coursesInfo[courseName] = courseInfo;
+    //   }
+    //
+    //   // for each course, we loop through its children to gather all the videos
+    //   if (isDirectory(COURSE_PATH)) {
+    //     recurGetVideos(COURSE_PATH, [], courseInfo, courseName);
+    //   }
+    // });
   }
 
   function cleanUpCourseInfo(coursesInfo) {
-    const existCourseSet = new Set(fs.readdirSync(PATH_TO_COURSES_DATABASE));
-    const lastCourseSet = new Set(Object.keys(coursesInfo));
+    // if the path to the course is not exists, we remove it from coursesInfo
 
-    lastCourseSet.difference(existCourseSet).forEach((courseName) => {
-      console.log(courseName);
-      delete coursesInfo[courseName];
+    Object.getOwnPropertyNames(coursesInfo).forEach((courseName) => {
+      if (coursesInfo[courseName].path === undefined) {
+        delete coursesInfo[courseName];
+      }
+
+      if (isDirectory(coursesInfo[courseName].path) === false) {
+        delete coursesInfo[courseName];
+      }
     });
   }
 
