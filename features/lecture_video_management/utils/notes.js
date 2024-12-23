@@ -6,6 +6,13 @@ const { ipcRenderer } = require("electron");
 
 async function getPathToVideoNote(videoName) {
   const PATH_TO_USER_DATABASE = await ipcRenderer.invoke("get-user-data-path");
+
+  // we change from <sep> to " " since it can cause some issue in naming system, causes by the
+  // different between OS
+  videoName = videoName.replaceAll("<sep>", " ");
+
+  console.log(videoName);
+
   // cut off the .mp4
   let name = videoName.slice(0, -4);
 
@@ -15,6 +22,8 @@ async function getPathToVideoNote(videoName) {
   if (!fs.existsSync(PATH_TO_NOTES_DATABASE)) {
     fs.mkdirSync(PATH_TO_NOTES_DATABASE);
   }
+
+  console.log(name);
 
   const PATH_TO_VIDEO_NOTES = path.join(
     PATH_TO_USER_DATABASE,
