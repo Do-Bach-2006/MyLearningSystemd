@@ -141,7 +141,7 @@ async function initialize() {
         delete coursesInfo[courseName];
       }
 
-      if (isDirectory(coursesInfo[courseName].path) === false) {
+      if (fs.existsSync(coursesInfo[courseName].path) === false) {
         delete coursesInfo[courseName];
       }
     });

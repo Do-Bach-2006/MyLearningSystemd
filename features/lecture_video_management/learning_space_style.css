@@ -104,7 +104,7 @@ html {
 .collapse-btn {
   position: absolute;
   top: 1%;
-  left: 1%;
+  left: 40%;
   background-color: var(--red);
   color: #fff;
   border: none;
@@ -122,12 +122,17 @@ html {
 
 #collapseBtn {
   position: absolute;
-  left: 4%;
+  top: 1%;
+  left: 42%;
 }
-
-.sidebar.collapsed ~ .collapse-btn {
-  left: 10px;
-}
+/**/
+/* .sidebar.collapsed ~ .collapse-btn { */
+/*   left: 10px; */
+/* } */
+/**/
+/* .sidebar.collapsed ~ #collapseBtn { */
+/*   left: 50px; */
+/* } */
 
 .video-tag {
   margin: 10px;
