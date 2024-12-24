@@ -39,7 +39,6 @@
       "!*.gitignore",
       "!*.git/"
     ],
-    "downloadAlternateFFmpeg": true,
     "asar": {
       "smartUnpack": true
     },
